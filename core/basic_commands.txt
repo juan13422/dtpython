@@ -1,0 +1,8 @@
+django-admin startproject dtproto
+cd dtproto
+python manage.py startapp core
+python manage.py startapp ltp
+python manage.py startapp lineage
+python manage.py startapp dbcnnx
+python manage.py startapp mhcnnx
+python manage.py startapp odcnnx

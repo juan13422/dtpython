@@ -1,0 +1,685 @@
+
+
+{% load static %}
+
+<link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'core/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+
+
+        <div id="page-wrapper" class="gray-bg" style=" margin-left: 0px;">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+		
+	<!--
+		
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+				
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+					
+                </div>
+            </form>
+        </div>
+	-->
+
+        </nav>
+        </div>
+		
+            
+			<div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+				
+<!-- fomulario -->
+
+<div class="ibox-content">
+                            <form method="get" class="form-horizontal">
+                                <div class="form-group">
+
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+												<div class="widget style1 yellow-bg">
+													<div class="row vertical-align">
+														<div class="col-xs-4">
+															<i class="fa fa-check-square-o fa-3x"></i>
+														</div>
+														<div class="col-xs-8 text-right">
+															<h2 class="font-bold">Detalle</h2>
+														</div>
+													</div>
+												</div>
+											
+											
+											</div>
+                                            <div class="col-md-4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+								
+                                <div class="form-group">
+
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-4">Id Ejercicio <input type="text" placeholder="DTC-1009987" class="form-control"></div>
+                                            <div class="col-md-4">Reporte<input type="text" placeholder="Cheques de Caja" class="form-control"></div>
+                                            <div class="col-md-4">Fecha Info <input type="text" placeholder="01-Jun-2022" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group has-warning">
+								<label class="col-sm-2 control-label" style="font-size: 16px;">Resultado</label>
+
+                                    <div class="col-sm-10">
+									<div class="alert alert-warning">
+                                Los resultados del ejercicio indican que se presentaron direrencias. 
+											</div>
+									</div>
+                                </div>
+
+                                
+								
+                                
+                                
+								
+
+                                
+                                
+                                </form></div>
+<!-- Fin Formulario -->				
+				
+				
+				<!--
+                    <h2>Issue list</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a>App views</a>
+                        </li>
+                        <li class="active">
+                            <strong>Issue list</strong>
+                        </li>
+                    </ol>
+				-->
+				
+                </div>
+            </div>
+
+        <div class="wrapper wrapper-content  animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+					<!--
+                        <div class="ibox-title">
+                            <h5>Issue list</h5>
+                            <div class="ibox-tools">
+                                <a href="" class="btn btn-primary btn-xs">Add new issue</a>
+                            </div>
+                        </div>
+						-->
+                        <div class="ibox-content">
+
+                            <div class="m-b-lg">
+                            </div>
+
+                            <div class="table-responsive">
+                            <table class="table table-hover issue-tracker">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="label label-default" style="font-size: 14px;">*********8765</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%; height: 30px;" >
+                                        <a href="#">
+                                            SALDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        EDC
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button id="btnEVidencia" type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-default" style="font-size: 14px;">*********7322</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            SALDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        EDC
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-danger" style="font-size: 14px;">*********8799</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            TASA ORD.
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo TASA
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 6,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        CONTRATO
+										</a>
+										
+										<span>
+                                            Contrato Regulatorio
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-danger btn-circle" type="button"><i class=" fa fa-times"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-default" style="font-size: 14px;">*********8765</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            TOTAL BALANCE
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo TOTAL BALANCE
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        PANTALLA PP
+										</a>
+										
+										<span>
+                                            Pantalla PP
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-danger" style="font-size: 14px;">*********8765</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            SALDO VENCIDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO VENCIDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 7,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        Contrato
+										
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-danger btn-circle" type="button"><i class="fa fa-times"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-danger" style="font-size: 14px;">*********8711</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            SALDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,500.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        EDC
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-danger btn-circle" type="button"><i class="fa fa-times"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-danger" style="font-size: 14px;">*********8765</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            SALDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 1,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        EDC
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-danger btn-circle" type="button"><i class="fa fa-times"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-danger" style="font-size: 14px;">*********8225</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            RISK INDICATOR
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo RISK INDICATOR
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,700.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        Pantall PP
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-danger btn-circle" type="button"><i class="fa fa-times"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-default" style="font-size: 14px;">*********8765</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            SALDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        EDC
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="label label-default" style="font-size: 14px;">*********8765</span>
+                                    </td>
+                                    <td  class="issue-info"    style=" width: 20%;" >
+                                        <a href="#">
+                                            SALDO
+                                        </a>
+
+                                        <small>
+                                            Se analizo el atributo SALDO
+                                        </small>
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                        $ 5,000.00
+                                    </td>
+                                    <td>
+                                         <a href="#">
+                                        EDC
+										</a>
+										
+										<span>
+                                            Estado de Cuenta
+                                        </span>
+                                    </td>
+                                    <td class="text-right">
+										<button class="btn btn-info btn-circle" type="button"><i class="fa fa-check"></i>
+										</button>
+                                    </td>
+									<td class="text-right">
+										<button type="button" class="btn  btn-xs btn-success">Evidencia</button>
+                                    </td>
+                                    </td>
+									<td class="text-right">
+										<div class="form-group"><label></label> <input type="email" placeholder="Comentarios" class="form-control"></div>
+                                    </td>
+
+
+                                </tr>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Citibanamex &copy; 2022-2023
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="{% static 'core/js/jquery-2.1.1.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/js/plugins/metisMenu/jquery.metisMenu.js' %}"></script>
+    <script src="{% static 'core/js/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{% static 'core/js/inspinia.js' %}"></script>
+    <script src="{% static 'core/js/plugins/pace/pace.min.js' %}"></script>
+
+    <!-- Peity -->
+    <script src="{% static 'core/js/plugins/peity/jquery.peity.min.js' %}"></script>
+
+    <!-- Peity demo data -->
+    <script src="{% static 'core/js/demo/peity-demo.js' %}"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script> 
+
+	
+	<script>
+	
+	$('#btnEVidencia').click(function(){
+
+            //alert ('Estatus de la Validacion');
+
+            var contenido=
+            
+          '<div>'+
+'<p class=\"alert alert-warning \">' +
+ '  A data tracing operation can be defined as an end-to-end activity to perform data quality accuracy checks for CDEs' +
+  '                                                       </p> ' +
+		  '<iframe src=\"{% static 'core/citibanamex2.pdf' %}\" style=\"width:600px; height:500px;\" frameborder=\"0\"></iframe>'
+'                                                   <ul class=\"steps\" style=\"margin-left: 0\">'+
+'                                                       <li data-step=\"1\" class=\"complete\">'+
+'                                                           <span class=\"step\">1</span>'+
+'                                                           <span class=\"title\">ALS</span>'+
+'                                                       </li>'+
+''+
+'                                                       <li data-step=\"2\" class=\"complete\">'+
+'                                                           <span class=\"step\">2</span>'+
+'                                                           <span class=\"title\">111</span>'+
+'                                                       </li>'+
+''+
+'                                                       <li data-step=\"3\" class=\"complete\">'+
+'                                                           <span class=\"step\">3</span>'+
+'                                                           <span class=\"title\">S050</span>'+
+'                                                       </li>'+
+''+
+'                                                       <li data-step=\"4\" class=\"active\">'+
+'                                                           <span class=\"step\" style=\"border-color:#f3ee54;\">4</span>'+
+'                                                           <span class=\"title\">SPC</span>'+
+'                                                       </li>'+
+'                                                   </ul>'+
+'                                               </div> <hr>'  +
+'<p class=\"alert alert-warning \">' +
+ '  A data tracing operation can be defined as an end-to-end activity to perform data quality accuracy checks for CDEs' +
+  '                                                       </p> '  ;
+
+
+
+
+               $.alert({
+                icon: 'fas fa-clock fa-2x fa-fw',
+                title: 'Data Tracing Lineage',
+                content: contenido,
+                columnClass: 'medium',
+                animationSpeed:800,
+                animationBounce:1,
+                animation: 'zoom',
+                closeAnimation: 'zoom',
+                 animationBounce: 1.5,
+                animateFromElement: false,
+                theme: 'material',
+                type: 'orange',
+                buttons: {
+                    Aceptar: {
+                         btnClass: 'btn-green',
+                         action:function () {
+                        }
+                    }
+                }
+            });
+
+
+        });
+
+	
+	</script>

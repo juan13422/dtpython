@@ -1,0 +1,9 @@
+from django.shortcuts import render, HttpResponse
+
+# Create your views here.
+
+def index(request):
+    html_response="<h1> INDEX</h1>"
+    return HttpResponse(html_response)
+
+

@@ -1,0 +1,1059 @@
+    {% load static %}
+    <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'core/css/plugins/iCheck/custom.css' %}" rel="stylesheet">
+
+    <link href="{% static 'core/css/plugins/steps/jquery.steps.css' %}" rel="stylesheet">
+    <link href="{% static 'core/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'core/css/style.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+	
+   <style>
+
+        .wizard > .content > .body { position: relative; }
+		
+		.wizard > .steps .current a,
+.wizard > .steps .current a:hover,
+.wizard > .steps .current a:active
+{
+    /** background: #1AB394; **/
+	background: #056dae;
+    color: #fff;
+    cursor: default;
+}
+
+.wizard > .actions a,
+.wizard > .actions a:hover,
+.wizard > .actions a:active
+{
+    /** background: #1AB394; **/
+	background: #056dae;
+    color: #fff;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.wizard > .steps .done a,
+.wizard > .steps .done a:hover,
+.wizard > .steps .done a:active
+{
+    background: #9dc8e2;
+    color: #fff;
+}
+
+
+
+    </style>
+	
+	
+
+<div class="ibox-content">	
+<h3>Data Tracing Process Configuration </h3>
+
+                            <form id="form" action="#" class="wizard-big">
+							<!--
+                                <i class="blue ace-icon fa  fa-database bigger-220">a</i>
+							-->	
+								<h1>Configuración</h1>
+                                <fieldset>
+                                    <h2> Regulatory Data Tracing Process Configuration</h2>
+                                    <div class="row">
+                                     <div class="col-sm-6">
+<!--  primer tab -->
+										<div class="profile-info-name blue">  </div>
+
+											<div class="profile-info-value col-xs-12 ">
+												<div class="input-group">
+													<span class="input-group-addon" >
+														<i class="blue fa fa-key fa-lg"></i>
+														<span>
+														Data Tracing Name
+														</span>
+													</span>
+													<div class="form-group">
+			<input data-toggle="tooltip"  title="Identificador del ejercicio" type="text" value="" id="inputUsuario" name="inputUsuario" class="form-control required" placeholder="Id Data Tracing Event" required="" autofocus="">
+
+													</div>
+												</div>
+										</div>
+									
+
+										<div class="profile-info-name blue">  </div>
+
+											<div class="profile-info-value col-xs-12 ">
+												<div class="input-group">
+													<span class="input-group-addon" >
+														<i class="blue fa fa-key fa-lg"></i>
+														<span>
+														Reporte
+														</span>
+													</span>
+													<div class="form-group">
+													<input type="text" value="" id="inputUsuario" name="inputUsuario" class="form-control required" placeholder="Report Name" required="" autofocus="">
+													</div>
+												</div>
+										</div>
+
+
+									<div class="profile-info-name blue">  </div>
+
+										<div class="profile-info-value col-xs-12 ">
+											<div class="input-group">
+												<span class="input-group-addon"   >
+													<i class="blue fa fa-user fa-lg"></i>
+													<span>
+														Report Owner
+													</span>
+												</span>
+												<div class="form-group">
+												<input type="text" value="" id="inputUsuario" name="inputUsuario" class="form-control required" placeholder="Report Owner" >
+												</div>
+											</div>
+										</div>
+						
+
+<!-- fin primer tab -->
+											
+                                        </div>
+                                        
+                                        <div class="col-sm-6">
+                                            <div class="text-center">
+                                                <div style="margin-top: 20px">
+                                                    <i class="fa fa-gears" style="font-size: 180px;color: #e5e5e5 "></i>
+                                                </div>
+											</div>
+                                            </div>
+
+                                    </div>
+
+
+                                </fieldset>
+                                <h1>Data Set</h1>
+                                <fieldset style="display: block;padding-top: 10px;">
+                                    <h2> Reportes y Productos</h2>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+										
+                                            <div class="form-group">
+                                                <label>Reporte</label>
+												<select id="listasReportes" data-placeholder="Select Report" class="chosen-select" tabindex="5" style="width: 425px">
+													<option value="">Seleccione Reporte</option>
+													<optgroup label="Reportes Globales">
+													  <option>FRY-14Q</option>
+													  <option>2052A</option>
+													  <option>RWA</option>
+													</optgroup>
+
+													<optgroup label="Reportes Locales">
+													  <option>IPAB</option>
+													  <option>Cheques de Caja</option>
+													  <option>Operaciones Relevantes</option>
+													  <option>Operaciones en Dolares</option>
+													  <option>CNR</option>
+													  <option>CR</option>
+													  <option>RO4H</option>
+													  <option>PnL</option>
+													</optgroup>
+												  </select>
+
+
+<!--
+                                                <input id="name" name="name" type="text" class="form-control required">
+-->												
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Producto</label>
+										<select id="listaProductos" data-placeholder="Productos..."
+											class="chosen-select"  style="width:425px;" tabindex="4">
+											<option value="">Seleccione Producto</option>
+											<option value="IPAB">Tarjetas de Crédito</option>
+											<option value="Cheques">Créditos Personales</option>
+											<option value="Hoptecario">Créditos Nomina</option>
+											<option value="Personal">Hipotecario</option>
+											<option value="Personal">Pyme</option>
+											<option value="Personal">Infonavit</option>
+										</select>
+
+												
+<!--												
+                                                <input id="surname" name="surname" type="text" class="form-control required">
+-->												
+                                            </div>
+											
+                                        
+										
+										
+                                    <div class="form-group">
+										<div class="ibox-content">
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Total Balance</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Due Balance</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Day Past Due</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-1-xs ">Minimkum Amount to Pay</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Ordinary Interest Rate</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Moratorium Interest Rate</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Bucket</span> <br>
+											<input type="checkbox" id="checkbox"  > <span class="m-l-xs ">Risk Indicator</span> <br>
+										</div>
+									</div>
+
+
+                                    <div class="form-group">
+										 <label>Date Information</label>
+										<input type="date" value="" id="inputUsuario" name="inputUsuario" 
+										class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+									</div>
+									
+                                <div class="form-group">
+                                     <label>Num Rows</label>
+									<input type="text" value="100" id="numRows" name="inputUsuario" class="form-control" placeholder="Número de regstros a recuperar." required="" autofocus="">
+								</div>
+								
+                               <div class="form-group">
+									<a id="btnConnx" href="#" class="btn btn-sm btn-block btn-primary">
+										<i class="ace-icon fa fa-plus-circle bigger-120"></i>
+										<span class="bigger-110">Connection</span>
+									</a>
+								</div>
+									
+							</div>
+							<div id="jqgridPanel" class="col-lg-6">
+								     <div id="idGears" class="text-center">
+									 								<hr>	
+								<hr><hr><hr><hr>
+
+											<div style="margin-top: 20px">
+												<i class="fa fa-gears" style="font-size: 280px;color: #e5e5e5 "></i>
+											</div>
+                                    </div>
+						<!--		
+									<div class="form-group">
+										<label>Email *</label>
+										<input id="email" name="email" type="text" class="form-control required email">
+									</div>
+									<div class="form-group">
+										<label>Address *</label>
+										<input id="address" name="address" type="text" class="form-control">
+									</div>
+						-->			
+
+										<!-- Seccion para JQGrid -->												
+										<div id="ContenedorJQGrid"   class="space-20">
+										<!-- Para recibior  JQGrid -->
+													<div class="ibox-content  col-xs-12 col-sm-| ">
+														<div class="board">
+															<div class="board-inner">
+																<div class="jqGrid_wrapper">
+																	<table id="table_list_2"></table>
+																	<div id="pager_list_2"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+										</div>
+										<!-- Fin Para recibior  JQGrid -->
+										<!-- Fin Seccion para JQGrid -->												
+
+
+						
+						
+
+								
+						</div>
+				</div>
+                      </fieldset>
+
+                                <h1>Custom Data Set</h1>
+                                <fieldset>
+								
+							       <h2>Selección Personalizada de Datos</h2>	
+								   <hr><hr><hr>
+								 <div class="form-group">
+                                 
+                            
+								<input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+
+
+                                </div>
+									
+                                </fieldset>
+
+                                <h1>LTP</h1>
+                                <fieldset>
+                                    <h2>Regulatory Report Account Balance</h2>
+									<!--
+                                    <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+									-->
+									
+
+				
+<!--INI  nueva tabla para LTP -->
+
+<div class="table table-condensed">
+    <div class="table-responsive" id="contenidoTabla">
+        
+        <table id="LTP" class="table table-hover table-sm">
+            <thead>
+                <tr id="ltptr">
+                    <th>Producto</th>
+                    <th>Feed ID</th>
+                    <th>No de crédito</th>
+                    <th>Atributo</th>
+                    <th>Fecha de reporte</th>
+                    <th>Tipo de LTP</th>
+                    <th>Extraer</th>
+                    <th>Carga manual</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td id="ltptd">HIPOTECA</td>
+                    <td id="ltptd">RT-SGL-145678-JIYH-FF-MX</td>
+                    <td id="ltptd">0102030405</td>
+                    <td id="ltptd">BASE_CJU_RGZ</td>
+                    <td id="ltptd">
+                        <div class="profile-info-row">
+							<div class="profile-info-value  col-xs-6 ">
+								<div class="input-group">
+												<span class="input-group-addon">
+													<i class=" blue fa fa-calendar fa-lg"></i>
+												</span>
+								<input type="date" value="" id="inputUsuario" name="inputUsuario" 
+								class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+								</div>
+							</div>
+						</div>
+                    </td>
+                    <td id="ltptd">
+                        <select id="tablaltp" style="width:auto">
+                        	<option value="">Seleccciona</option>
+                            <option value="">Estado de cuenta</option>
+                            <option value="">Contrato</option>
+                            <option value="">Tarjeta de crédito</option>
+                            <option value="">KYC</option>
+                            <option value="">PP</option>
+                        </select>
+                    </td>
+                    <td id="ltptd">
+                        <a class="btn btn-success btn-sm" href="#" role="button" onclick="window.open('conexion.html', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow">Conectar</a></p>
+                    </td>
+                    <td id="ltptd">
+                        <!--<a name="" id="" class="btn btn-success btn-sm" href="#" role="button">Buscar...</a>-->
+                        <div class="profile-info-row">
+                                <input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+                                
+                                    <div class="profile-info-value col-xs-6 ">
+                                        <span>				
+                                                <div class="col-xs-12">
+                            
+                                                </div>											
+                                        </span>
+                                    </div>
+                            </div>
+
+                    </td>
+                    </tr>
+                    <tr>
+                        <td id="ltptd">PRESTAMOS</td>
+                        <td id="ltptd">RT-SGL-145678-FF-MX-000</td>
+                        <td id="ltptd">00000000</td>
+                        <td id="ltptd">RISK_CFT_RGZ</td>
+                        <td id="ltptd">
+                            <div class="profile-info-row">
+                                <div class="profile-info-value  col-xs-6 ">
+                                    <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class=" blue fa fa-calendar fa-lg"></i>
+                                                    </span>
+                                    <input type="date" value="" id="inputUsuario" name="inputUsuario" 
+                                    class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td id="ltptd">
+                            <select id="tablaltp" style="width:auto">
+                                <option value="">Seleccciona</option>
+                                <option value="">Estado de cuenta</option>
+                                <option value="">Contrato</option>
+                                <option value="">Tarjeta de crédito</option>
+                                <option value="">KYC</option>
+                                <option value="">PP</option>
+                            </select>
+                        </td>
+                        <td id="ltptd">
+                            <a class="btn btn-success btn-sm" href="#" role="button" onclick="window.open('conexion.html', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow">Conectar</a></p>
+                        </td>
+                        <td id="ltptd">
+                            <!--<a name="" id="" class="btn btn-success btn-sm" href="#" role="button">Buscar...</a>-->
+                            <div class="profile-info-row">
+                                    <input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+                                    
+                                        <div class="profile-info-value col-xs-6 ">
+                                            <span>				
+                                                    <div class="col-xs-12">
+                                
+                                                    </div>											
+                                            </span>
+                                        </div>
+                                </div>
+    
+                        </td>
+                        </tr>
+                    <tr>
+                        <td id="ltptd">TARJETA DE CREDITO</td>
+                        <td id="ltptd">RT-SGL-145678-M78546-MX</td>
+                        <td id="ltptd">07892315</td>
+                        <td id="ltptd">UNIQ_ID_CCY_RGZ</td>
+                        <td id="ltptd">
+                            <div class="profile-info-row">
+                                <div class="profile-info-value  col-xs-6 ">
+                                    <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class=" blue fa fa-calendar fa-lg"></i>
+                                                    </span>
+                                    <input type="date" value="" id="inputUsuario" name="inputUsuario" 
+                                    class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td id="ltptd">
+                            <select id="tablaltp" style="width:auto">
+                                <option value="">Seleccciona</option>
+                                <option value="">Estado de cuenta</option>
+                                <option value="">Contrato</option>
+                                <option value="">Tarjeta de crédito</option>
+                                <option value="">KYC</option>
+                                <option value="">PP</option>
+                            </select>
+                        </td>
+                        <td id="ltptd">
+                            <a class="btn btn-success btn-sm" href="#" role="button" onclick="window.open('conexion.html', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow">Conectar</a></p>
+                        </td>
+                        <td id="ltptd">
+                            <!--<a name="" id="" class="btn btn-success btn-sm" href="#" role="button">Buscar...</a>-->
+                            <div class="profile-info-row">
+                                    <input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+                                    
+                                        <div class="profile-info-value col-xs-6 ">
+                                            <span>				
+                                                    <div class="col-xs-12">
+                                
+                                                    </div>											
+                                            </span>
+                                        </div>
+                                </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="ltptd">TARJETA DE CREDITO</td>
+                        <td id="ltptd">RT-SGL-145678-MTDS-FF-MX</td>
+                        <td id="ltptd">0102030405</td>
+                        <td id="ltptd">BASE_CCY_RGZ</td>
+                        <td id="ltptd">
+                            <div class="profile-info-row">
+                                <div class="profile-info-value  col-xs-6 ">
+                                    <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class=" blue fa fa-calendar fa-lg"></i>
+                                                    </span>
+                                    <input type="date" value="" id="inputUsuario" name="inputUsuario" 
+                                    class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td id="ltptd">
+                            <select id="tablaltp" style="width:auto">
+                                <option value="">Seleccciona</option>
+                                <option value="">Estado de cuenta</option>
+                                <option value="">Contrato</option>
+                                <option value="">Tarjeta de crédito</option>
+                                <option value="">KYC</option>
+                                <option value="">PP</option>
+                            </select>
+                        </td>
+                        <td id="ltptd">
+                            <a class="btn btn-success btn-sm" href="#" role="button" onclick="window.open('conexion.html', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow">Conectar</a></p>
+                        </td>
+                        <td id="ltptd">
+                            <!--<a name="" id="" class="btn btn-success btn-sm" href="#" role="button">Buscar...</a>-->
+                            <div class="profile-info-row">
+                                    <input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+                                    
+                                        <div class="profile-info-value col-xs-6 ">
+                                            <span>				
+                                                    <div class="col-xs-12">
+                                
+                                                    </div>											
+                                            </span>
+                                        </div>
+                                </div>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="ltptd">HIPOTECA</td>
+                        <td id="ltptd">RT-YPW-PPLKR-9854-FF-MX01</td>
+                        <td id="ltptd">019073545</td>
+                        <td id="ltptd">RISK_MGT_HFT-CD</td>
+                        <td id="ltptd">
+                            <div class="profile-info-row">
+                                <div class="profile-info-value  col-xs-6 ">
+                                    <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class=" blue fa fa-calendar fa-lg"></i>
+                                                    </span>
+                                    <input type="date" value="" id="inputUsuario" name="inputUsuario" 
+                                    class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td id="ltptd">
+                            <select id="tablaltp" style="width:auto">
+                                <option value="">Seleccciona</option>
+                                <option value="">Estado de cuenta</option>
+                                <option value="">Contrato</option>
+                                <option value="">Tarjeta de crédito</option>
+                                <option value="">KYC</option>
+                                <option value="">PP</option>
+                            </select>
+                        </td>
+                        <td id="ltptd">
+                            <a class="btn btn-success btn-sm" href="#" role="button" onclick="window.open('conexion.html', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow">Conectar</a></p>
+                        </td>
+                        <td id="ltptd">
+                            <!--<a name="" id="" class="btn btn-success btn-sm" href="#" role="button">Buscar...</a>-->
+                            <div class="profile-info-row">
+                                    <input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+                                    
+                                        <div class="profile-info-value col-xs-6 ">
+                                            <span>				
+                                                    <div class="col-xs-12">
+                                
+                                                    </div>											
+                                            </span>
+                                        </div>
+                                </div>
+    
+                        </td>
+                        </tr>
+                        <tr>
+                            <td id="ltptd">PRESTAMOS</td>
+                            <td id="ltptd">RT-SGL-14FDKO8-MTDS-KFJ-5432</td>
+                            <td id="ltptd">0102030405</td>
+                            <td id="ltptd">UNIQ_FG_KHL</td>
+                            <td id="ltptd">
+                                <div class="profile-info-row">
+                                    <div class="profile-info-value  col-xs-6 ">
+                                        <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class=" blue fa fa-calendar fa-lg"></i>
+                                                        </span>
+                                        <input type="date" value="" id="inputUsuario" name="inputUsuario" 
+                                        class="form-control" placeholder="Fecha De la información" required="" autofocus="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td id="ltptd">
+                                <select id="tablaltp" style="width:auto">
+                                    <option value="">Seleccciona</option>
+                                    <option value="">Estado de cuenta</option>
+                                    <option value="">Contrato</option>
+                                    <option value="">Tarjeta de crédito</option>
+                                    <option value="">KYC</option>
+                                    <option value="">PP</option>
+                                </select>
+                            </td>
+                            <td id="btn1 ltptd">
+                                <a class="btn btn-success btn-sm" href="#" role="button" onclick="window.open('conexion.html', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow">Conectar</a></p>
+                            </td>
+                            <td id="ltptd">
+                                <!--<a name="" id="" class="btn btn-success btn-sm" href="#" role="button">Buscar...</a>-->
+                                <div id="btn2" class="profile-info-row">
+                                        <input id="archivo-2" name="documentos" type="file" class="file" multiple=true data-preview-file-type="any">
+                                        
+                                            <div class="profile-info-value col-xs-6 ">
+                                                <span>				
+                                                        <div class="col-xs-12">
+                                    
+                                                        </div>											
+                                                </span>
+                                            </div>
+                                    </div>
+        
+                            </td>
+                            </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+<!--
+<a name="" id="btnProcesarLTP"  class="btn btn-primary" href="#" role="button">Procesar</a>
+-->
+<!--
+<script language="javascript" type="text/javascript">
+    function habilitar(){
+        boton_1 = document.getElementById("btn1").value;
+        boton_2 = document.getElementById("btn2").value;
+        val = 0;
+        if(boton_1==""){
+            val++;
+        }
+        if(boton_2==""){
+            val++;
+        }
+        if(val==0){
+            document.getElementById("btn1").disabled = false;
+        } else {
+            document.getElementById("btn1").disabled = true;
+        }
+    }
+    document.getElementById("btn1").addEventListener("click", ()=>{
+        alert("boton")
+    })
+
+</script>
+-->
+
+<!-- FIN  nueva tabla para LTP -->
+
+									
+									
+                                </fieldset>
+                            </form>
+</div>
+
+
+
+    <script src="{% static 'core/js/plugins/jqGrid/i18n/grid.locale-en.js' %}"></script>
+    <script src="{% static 'core/js/plugins/jqGrid/jquery.jqGrid.min.js' %}"></script>
+
+
+    <!-- Steps -->
+    <script src="{% static 'core/js/plugins/staps/jquery.steps.min.js' %}"></script>
+
+    <!-- Jquery Validate -->
+    <script src="{% static 'core/js/plugins/validate/jquery.validate.min.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+<script>
+	function fncFillSelect(listsProductosPar, options){
+			var listsProductos = document.getElementById(listsProductosPar);
+			$(listsProductos).empty();
+			for(var i = 0; i < options.length; i++) {
+				var opt = options[i];
+				var item = opt.split(":");
+				var el = document.createElement("option");
+				el.textContent = item[1];
+				el.value = item[0];
+				listsProductos.appendChild(el);
+			}
+		}
+
+
+$("#listasReportes").change(function(){
+    console.log('Function >>listasReportes<<');
+    var optionSelected = $(this).find("option:selected");
+    var valueSelected  = optionSelected.val();
+    var textSelected   = optionSelected.text();
+	console.log(valueSelected);
+	console.log(textSelected);
+
+	if (textSelected=='FRY-14Q'){
+		var options = ["A3:A3 (Credit Cards)", "A8:A8 (Small Businss)", "A5:A5 (Mortgages)", "A6:A6 (Other Customer Loans)"];
+		fncFillSelect("listaProductos", options);
+	}
+
+});
+
+</script>
+
+<script>
+var DataSet=100;
+var mydata ="";
+
+/**** JQGRID ***/
+
+var mydata = [
+	{id: "1", invdate: "2010-05-24", name: "test", note: "note", tax: "10.00", total: "2111.00"} ,
+	{id: "2", invdate: "2010-05-25", name: "test2", note: "note2", tax: "20.00", total: "320.00"},
+	{id: "3", invdate: "2007-09-01", name: "test3", note: "note3", tax: "30.00", total: "430.00"},
+	{id: "4", invdate: "2007-10-04", name: "test", note: "note", tax: "10.00", total: "210.00"},
+	{id: "5", invdate: "2007-10-05", name: "test2", note: "note2", tax: "20.00", total: "320.00"},
+	{id: "6", invdate: "2007-09-06", name: "test3", note: "note3", tax: "30.00", total: "430.00"},
+	{id: "7", invdate: "2007-10-04", name: "test", note: "note", tax: "10.00", total: "210.00"},
+	{id: "8", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "21.00", total: "320.00"},
+	{id: "9", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"},
+	{id: "11", invdate: "2007-10-01", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00"},
+	{id: "12", invdate: "2007-10-02", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00"},
+	{id: "13", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"},
+	{id: "14", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00"},
+	{id: "15", invdate: "2007-10-05", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00"},
+	{id: "16", invdate: "2007-09-06", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"},
+	{id: "17", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00"},
+	{id: "18", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00"},
+	{id: "19", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"},
+	{id: "21", invdate: "2007-10-01", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00"},
+	{id: "22", invdate: "2007-10-02", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00"},
+	{id: "23", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"},
+	{id: "24", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00"},
+	{id: "25", invdate: "2007-10-05", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00"},
+	{id: "26", invdate: "2007-09-06", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"},
+	{id: "27", invdate: "2007-10-04", name: "test", note: "note", amount: "200.00", tax: "10.00", total: "210.00"},
+	{id: "28", invdate: "2007-10-03", name: "test2", note: "note2", amount: "300.00", tax: "20.00", total: "320.00"},
+	{id: "29", invdate: "2007-09-01", name: "test3", note: "note3", amount: "400.00", tax: "30.00", total: "430.00"}
+	];
+
+
+	
+
+// Configuration for jqGrid Example 2
+
+$("#table_list_2").jqGrid({
+    data: mydata,
+    datatype: "local",
+    height: 350,
+    autowidth: true,
+    shrinkToFit: true,
+    rowNum: 20,
+    rowList: [10, 20, 30],
+    colNames:['Total Balance','Due Balance', 'Day Past Due', 'Minimkum Amount to Pay','Ordinary Interest Rate','Moratorium Interest Rate','Bucket'],
+    colModel:[
+        {name:'id',index:'id', editable: true, width:60, sorttype:"int",search:true},
+        {name:'invdate',index:'invdate', editable: true, width:90, sorttype:"date", formatter:"date"},
+        {name:'name',index:'name', editable: true, width:100},
+        {name:'amount',index:'amount', editable: true, width:80, align:"right",sorttype:"float", formatter:"number"},
+        {name:'tax',index:'tax', editable: true, width:80, align:"right",sorttype:"float"},
+        {name:'total',index:'total', editable: true, width:80,align:"right",sorttype:"float"},
+        {name:'note',index:'note', editable: true, width:100, sortable:false}
+    ],
+    pager: "#pager_list_2",
+    viewrecords: true,
+    caption: "Data Set",
+    add: true,
+    edit: true,
+    addtext: 'Add',
+    edittext: 'Edit',
+    hidegrid: false
+});
+
+// Add selection
+
+$("#table_list_2").setSelection(4, true);
+
+
+// Setup buttons
+$("#table_list_2").jqGrid('navGrid', '#pager_list_2',
+        {edit: true, add: true, del: true, search: true},
+        {height: 200, reloadAfterSubmit: true}
+);
+
+// Add responsive to jqGrid
+$(window).bind('resize', function () {
+    var width = $('.jqGrid_wrapper').width();
+
+    $('#table_list_2').setGridWidth(width+100);
+	});
+
+
+
+/******* FIN JQGRID  *****/
+
+
+
+window.onclick = function(clickEvent) {
+		//window.alert(\"Hi, im going to enlarge this image: \"+clickEvent.target.src);
+		console.log(clickEvent.target.tagName);
+		console.log(clickEvent.target.id);
+		if (clickEvent.target.tagName=="A" && clickEvent.target.id=="btnConnx"){
+			
+						var contenido=
+            
+			  '<div>'+
+					'                    <ul class=\"steps\" style=\"margin-left: 0\">'+
+					'                          <li data-step=\"1\" class=\"complete\" >'+
+					'                          <span class=\"step\">1</span>'+
+					'                          <span class=\"title\">User</span>'+
+					'                          </li>'+
+					''+
+					'                          <li data-step=\"2\" class=\"complete\" >'+
+					'                            <span class=\"step\">2</span>'+
+					'                            <span class=\"title\">Instance</span>'+
+					'                          </li>'+
+					''+
+					'                          <li data-step=\"3\"  class=\"complete\">'+
+					'                               <span class=\"step\">3</span>'+
+					'                               <span class=\"title\">Cnnx</span>'+
+					'                          </li>'+
+					''+
+					'                          <li data-step=\"4\" class=\"complete\" >'+
+					'                              <span class=\"step\" >4</span>'+
+					'                             <span class=\"title\">Ok</span>'+
+					'                          </li>'+
+					'               </ul>'+
+					'        </div> <hr>'  +
+					'<p class=\"alert alert-success \">' +
+					 '  La conexión a la base de datos fue exitosa, sa ha agregado el set de datos selecionado.  ' +
+					  '                                                       </p> '  ;
+
+
+					   $.alert({
+						icon: 'fa fa-database fa-2x fa-fw',
+						title: 'Database Connection',
+						content: contenido,
+						columnClass: 'medium',
+						animationSpeed:1800,
+						animationBounce:1,
+						animation: 'zoom',
+						closeAnimation: 'zoom',
+						 animationBounce: 2.5,
+						animateFromElement: false,
+						theme: 'modern',
+						type: 'blue',
+						buttons: {
+							Aceptar: {
+								 btnClass: 'btn-green',
+								 action:function () {
+									$('#idGears').html('');
+								    $.post('/jqgrid', { "id": 1, "pzavteid":123 },
+                                          function(response,status) {
+                                              var mydata = [response];
+                                              console.log(mydata);
+                                          }// fin function
+                                     ); // fin post
+									$('#ContenedorJQGrid').attr("class", "space-200");
+
+								}
+							}
+						}
+					});
+
+		}// fin if
+
+        if (clickEvent.target.tagName=="SELECT" && clickEvent.target.id=="listasReportes"){
+		    var optionSelected = $('#listasReportes').find("option:selected");
+            var valueSelected  = optionSelected.val();
+            var textSelected   = optionSelected.text();
+            console.log(valueSelected);
+            console.log(textSelected);
+            if (textSelected=='FRY-14Q'){
+                var options = ["A3:A3 (Credit Cards)", "A8:A8 (Small Businss)", "A5:A5 (Mortgages)", "A6:A6 (Other Customer Loans)"];
+                fncFillSelect("listaProductos", options);
+            }
+            if (textSelected=='2052A'){
+                var options = ["Personal Loan:Personal Loan", "Cards:Cards", "Deposits:Deposits", "Mortgage:Mortgage"];
+                fncFillSelect("listaProductos", options);
+            }
+            if (textSelected !='2052A'  && textSelected!='FRY-14Q' ){
+                var options =["IPAB:Tarjetas de Crédito","Cheques:Créditos Personales","Hoptecario:Créditos Nomina","Personal:Hipotecario","Personal:Pyme","Personal:Infonavit"];
+                fncFillSelect("listaProductos", options);
+            }
+
+		}
+        if (clickEvent.target.tagName=="SELECT" && clickEvent.target.id=="listaProductos"){
+
+		    var optionSelected = $('#listaProductos').find("option:selected");
+            var valueSelected  = optionSelected.val();
+            var textSelected   = optionSelected.text();
+            console.log(valueSelected);
+            console.log(textSelected);
+             if (valueSelected=='A3'){
+                console.log('Condicion A3');
+                console.log(DataSet);
+             }
+
+        }
+}		
+
+
+
+
+
+
+
+	$('#btnConnx').click(function(){
+            
+	$('#ContenedorJQGrid').attr("class", "space-200");
+
+			var contenido=
+            
+			  '<div>'+
+					'                    <ul class=\"steps\" style=\"margin-left: 0\">'+
+					'                          <li data-step=\"1\" class=\"complete\" >'+
+					'                          <span class=\"step\">1</span>'+
+					'                          <span class=\"title\">User</span>'+
+					'                          </li>'+
+					''+
+					'                          <li data-step=\"2\" class=\"complete\" >'+
+					'                            <span class=\"step\">2</span>'+
+					'                            <span class=\"title\">Instance</span>'+
+					'                          </li>'+
+					''+
+					'                          <li data-step=\"3\"  class=\"complete\">'+
+					'                               <span class=\"step\">3</span>'+
+					'                               <span class=\"title\">Cnnx</span>'+
+					'                          </li>'+
+					''+
+					'                          <li data-step=\"4\" class=\"complete\" >'+
+					'                              <span class=\"step\" >4</span>'+
+					'                             <span class=\"title\">Ok</span>'+
+					'                          </li>'+
+					'               </ul>'+
+					'        </div> <hr>'  +
+					'<p class=\"alert alert-success \">' +
+					 '  La conexión a la base de datos fue exitosa, sa ha agregado el set de datos selecionado.  ' +
+					  '                                                       </p> '  ;
+
+
+					   $.alert({
+						icon: 'fa fa-database fa-2x fa-fw',
+						title: 'Database Connection',
+						content: contenido,
+						columnClass: 'medium',
+						animationSpeed:800,
+						animationBounce:1,
+						animation: 'zoom',
+						closeAnimation: 'zoom',
+						 animationBounce: 2.5,
+						animateFromElement: false,
+						theme: 'modern',
+						type: 'blue',
+						buttons: {
+							Aceptar: {
+								 btnClass: 'btn-green',
+								 action:function () {
+								}
+							}
+						}
+					});
+
+
+        });
+
+
+</script>
+
+
+    <script>
+        $(document).ready(function(){
+		
+		
+		
+            $("#wizard").steps();
+			
+            $("#form").steps({
+                bodyTag: "fieldset",
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+					console.log('onStepChanging');
+					console.log('currentIndex>>'+currentIndex);
+					console.log(newIndex);
+                    // Always allow going backward even if the current step contains invalid fields!
+                    if (currentIndex > newIndex)
+                    {
+                        return true;
+                    }
+
+                    // Forbid suppressing "Warning" step if the user is to young
+                    if (newIndex === 3 && Number($("#age").val()) < 18)
+                    {
+                        return false;
+                    }
+
+                    var form = $(this);
+
+                    // Clean up if user went backward before
+                    if (currentIndex < newIndex)
+                    {
+                        // To remove error styles
+                        $(".body:eq(" + newIndex + ") label.error", form).remove();
+                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                    }
+
+                    // Disable validation on fields that are disabled or hidden.
+                    form.validate().settings.ignore = ":disabled,:hidden";
+
+                    // Start validation; Prevent going forward if false
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex)
+                {
+				
+					console.log('onStepChanged');
+					console.log(currentIndex);
+					console.log(priorIndex);
+
+                    // Suppress (skip) "Warning" step if the user is old enough.
+                    if (currentIndex === 2 && Number($("#age").val()) >= 18)
+                    {
+                        $(this).steps("next");
+                    }
+
+                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                    if (currentIndex === 2 && priorIndex === 3)
+                    {
+                        $(this).steps("previous");
+                    }
+                },
+                onFinishing: function (event, currentIndex)
+                {
+					console.log('onFinishing');
+					console.log(currentIndex);
+
+
+                    var form = $(this);
+
+                    // Disable validation on fields that are disabled.
+                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                    form.validate().settings.ignore = ":disabled";
+
+                    // Start validation; Prevent form submission if false
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex)
+                {
+					console.log('onFinished');
+					console.log(currentIndex);
+                    console.log('Send');
+
+                    var form = $(this);
+
+                    // Submit form input
+                    //form.submit();
+					$.post('/send', { "id": 1, "pzavteid":123 },
+					  function(response,status) {
+							//alert(response);
+							var string = response;
+							$('#main_page').html(response);
+					  }// fin function
+					 ); // fin post
+
+					
+                }
+            }).validate({
+                        errorPlacement: function (error, element)
+                        {
+                            element.before(error);
+                        },
+                        rules: {
+                            confirm: {
+                                equalTo: "#password"
+                            }
+                        }
+                    });
+       });
+    </script>
+

