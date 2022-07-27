@@ -85,10 +85,10 @@ DATABASES = {
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.oracle',
-#        'NAME': '192.168.1.64:1521/orcl',
-#        'USER': 'django',
-#        'PASSWORD': 'django',
-#        'HOST': '192.168.1.64',
+#        'NAME': 'localhost:1521/xepdb1',
+#        'USER': 'system',
+#        'PASSWORD': 'archysoft',
+#        'HOST': 'localhost',
 #        'PORT':'1521'
 #    }
 #}

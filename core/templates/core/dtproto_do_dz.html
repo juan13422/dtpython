@@ -1,0 +1,135 @@
+{% extends 'dtproto_base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="row">
+
+
+
+			<div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Load Section <small>Secciòn de descaga de Template </small></h5>
+
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#">Config option 1</a>
+                                </li>
+                                <li><a href="#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Template</h3>
+                                <p>En esta seccion se tiene disponibilidad de descargar el archivo template con.</p>
+                                <p>El template contiene las columnas predefinidas que establecen la estructura del archivo de entrada.</p>
+                                <p>Simplemente haga click en la imagen </p>
+                                <form role="form">
+                                    <div class="form-group"></div>
+                                    <div class="form-group"></div>
+                                    <div>
+                                        <!--
+                                        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
+                                        <label> <input type="checkbox" class="i-checks"> Remember me </label>
+                                        -->
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-sm-6"><h4>Excel Template</h4>
+                                <p>Puedes descargar la plantilla, Click:</p>
+                                <p class="text-center">
+                                    <a href="{% static 'core/template.xlsx' %}"><i class="fa fa-cloud-download big-icon"></i></a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+				</div>
+
+
+			<!-- seccion columna -->
+                <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Dropzone Area</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#">Config option 1</a>
+                                </li>
+                                <li><a href="#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content">
+                        <form id="my-awesome-dropzone" class="dropzone" action="#">
+                            <div class="dropzone-previews"></div>
+                            <button id="upload_file" type="submit" class="btn btn-primary pull-right">Upload File!</button>
+                        </form>
+                        <div>
+                            <div class="m text-right">
+							</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+			</div>
+
+<script>
+    $('#upload_file').click(function(){
+        console.log('#upload_file');
+
+    });
+
+</script>
+
+{% endblock %}
+
+
+
+{%block menu  %}
+<li>
+					   <a   href="/do_ini" id="dtap_inbox"
+                                class="btn btn-w-m btn-outline btn-default ">
+                        <i class="fa fa fa-cogs fa-2x pull-left"></i>
+                        <span class="nav-label ">Inbox</span>
+                        </a>
+</li>
+
+<li>
+                       <a id="Buscar" href="/do_dropzone"
+                                class="btn btn-w-m btn-outline btn-default ">
+                        <i class="fa  fa-cloud-upload fa-2x pull-left"></i>
+                        <span class="nav-label">Nuevo Ejercicio</span>
+                        </a>
+</li>
+
+{% endblock %}

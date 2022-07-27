@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 import logging
 from django.core.files.storage import FileSystemStorage
 
+
 # Create your views here.
 
 def index(request):
@@ -19,10 +20,20 @@ def ruteo(request):
     print("inputUsuario >>" + Usr.lower())
     print("inputPassword >>"+request.POST['inputPassword'])
     logging.info("inputPassword >>{}", request.POST['inputPassword'])
+
     if Usr.lower() == "na25228@citi.com":
+        # Data Stewaerwww
         html_file = "core/dtproto_main.html"
-    else:
-        print("MULTI ROL")
+    else:   #Data owner
+        if Usr.lower() == "do@citi.com":
+            html_file = "core/dtproto_do.html"
+        else:
+            # Lineage
+            if Usr.lower() == "lineage@citi.com":
+                html_file = "core/dtproto_lineage.html"
+            else:
+                html_file = "core/index.html"
+                
     return render(request,html_file)
 
 @csrf_exempt
@@ -44,3 +55,16 @@ def upload(request):
 
     return render(request,"core/upload.html")
 
+@csrf_exempt
+def do_ini(request):
+    html_file = "core/dtproto_do.html"
+    return render(request, html_file)
+@csrf_exempt
+def do_dropzone(request):
+    html_file = "core/dtproto_do_dz.html"
+    return render(request, html_file)
+
+@csrf_exempt
+def lineage(request):
+    html_file = "core/dtproto_lineage.html"
+    return render(request, html_file)
