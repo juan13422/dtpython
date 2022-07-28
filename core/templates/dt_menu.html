@@ -1,0 +1,627 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Tracing</title>
+    <script src="static/core/js/jquery-2.1.1.js"></script>
+    <link  href="static/core/css/bootstrap.min.css" rel="stylesheet">
+    <link  href="static/core/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link  href="static/core/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link  href="static/core/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+
+    <link  href="static/core/css/animate.css" rel="stylesheet">
+    <link  href="static/core/css/style.css" rel="stylesheet">
+
+    <link  href="static/core/css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link  href="static/core/css/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+
+    <link  href="static/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link  href="static/core/css/plugins/steps/jquery.steps.css" rel="stylesheet">
+
+    <script src="static/core/js/bootstrap.min.js"></script>
+
+    <script src="static/core/js/bootstrapValidator.min.js"></script>
+    <script src="static/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="static/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+
+    <!-- Data picker -->
+    <link  href="static/core/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link  href="static/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <link  href="static/core/css/plugins/select2/select2.min.css" rel="stylesheet">
+
+    <link  href="static/core/css/input-foto.css" rel="stylesheet">
+    <link  href="static/core/css/animate.css" rel="stylesheet">
+    <link  href="static/core/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.banamex.com/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <!--Confirm -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
+    <link  href="static/core/css/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <link  href="static/core/css/plugins/jqGrid/ui.jqgrid.css" rel="stylesheet">
+
+
+
+    <!--Datepicker -->
+    <script src="static/core/js/plugins/datapicker/bootstrap-datepicker-spanish.js"></script>
+
+    <!-- iCheck -->
+    <script src="static/core/js/plugins/iCheck/icheck.min.js"></script>
+
+
+    <!-- Select2 -->
+    <script src="static/core/js/plugins/select2/select2.full.min.js"></script>
+
+    <!-- DROPZONE -->
+    <script src="static/core/js/plugins/dropzone/dropzone.js"></script>
+
+
+
+    <script src="static/core/js/tabs.js"></script>
+
+    <link  href="static/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+
+
+    <style type="text/css">
+        /*boton arriba*/
+        .ir-arriba {
+            display: none;
+            padding: 20px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+
+
+    <style>
+        .wizard>.content>.body {
+            position: relative;
+        }
+    </style>
+
+
+
+    <script>
+        //Boton arriba
+        $(document).ready(function () {
+
+            var btnarriba;
+
+            $('.ir-arriba').click(function () {
+                $('body, html').animate({
+                    scrollTop: '0px'
+                }, 1000);
+            });
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $('.ir-arriba').slideDown(300);
+                } else {
+                    $('.ir-arriba').slideUp(300);
+                };
+            });
+
+
+        });
+//Fin boton arriba
+
+
+
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+
+
+    <!-- ace styles -->
+    <link rel="stylesheet"  href="static/core/css/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+
+    <script>
+        function PersonalizaPerfil() {
+            $("body").removeClass("skin-1");
+            $("body").removeClass("skin-2");
+            $("body").removeClass("skin-4");
+            $("body").removeClass("skin-5");
+            $("body").removeClass("skin-6");
+            $("body").removeClass("skin-7");
+
+
+            $("body").addClass("skin-1");
+            $("#dgrht").removeClass("dgrhtcssdft");
+            $("#dgrht").addClass("dgrhtcss");
+
+
+        }
+    </script>
+
+
+
+</head>
+
+<body onload="PersonalizaPerfil();">
+
+
+
+
+    <div class="modal inmodal" id="myModal45" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-pencil-square-o modal-icon"></i>
+                    <h4 class="modal-title"> New Data Tracing Process</h4>
+                    <small>Qualitative Analysis Methodology</small>
+                </div>
+
+
+                <div class="modal-body" style="padding-top: 1px;">
+                    <!-- Inicia modal Body -->
+
+
+
+
+
+                    <div class="ibox-content forum-container">
+
+                        <div class="forum-title">
+                            <h3>Reportes Regulatorios: </h3>
+                        </div>
+                        <div class="forum-item active">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="forum-icon">
+                                        <i class="fa fa-retweet"></i>
+                                    </div>
+                                    <a id="vac-confianza" href="#" class="forum-item-title">LINEAGE TRACING </a>
+                                </div>
+                                <div class="col-md-2 forum-info">
+                                    <div>
+                                        <span class="views-number">
+
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="forum-item">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="forum-icon">
+                                        <i class="fa fa-list-ul"></i>
+                                    </div>
+                                    <a id="vac-base" href="#" class="forum-item-title">LTP TRACING</a>
+                                </div>
+
+                                <div class="col-md-2 forum-info">
+                                    <div>
+                                        <span class="views-number">
+
+
+                                        </span>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                    <!-- Termna modal body -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Ingresar Datos</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <table align="center" height="60" style="width: 100%">
+        <tr>
+            <td width="40%" align="left"><img src="static/core/images/citi4.png" width="350" height="92" /></td>
+            <!--<td width="420" align="left">
+     <img src="static/core/images/70Salud.jpg" width="375" height="91" /></td>-->
+            <!--<td width="683" align="right">
+     <div id="dominio">Recepción Art. 74</div>
+
+     
+     </td>  -->
+            <td width="60%" align="right">
+                <div class="col-lg-11">
+                    <h2 style="color: white;"> Data Foundations
+
+                    </h2>
+                </div>
+
+
+            </td>
+        </tr>
+    </table>
+
+
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side " role="navigation" style="
+               margin-top: 10px;">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu " id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                                <img alt="image" class="img-circle" src="static/core/images/corporate-researcher-color.png"
+                                    style="  width: 75px;" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs">
+                                        <strong class="font-bold text-muted">Rita Smith</strong>
+                                    </span> <span class="text-muted text-xs block">
+                                        Tech Lead <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="#">Profile</a></li>
+                                <li class="divider"></li>
+                                <li><a  href="static/core/index4.php">Salir</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            Salud
+                        </div>
+                    </li>
+
+
+                    <!-- Parametrizar -->
+
+                    <!--
+                    <li>
+                        <a id="Buscar"  href="static/core/movi_multi_perfil.php" class="btn btn-w-m btn-outline btn-default ">
+                            <i class="fa  fa-home fa-2x pull-left"></i>
+                            <span class="nav-label">Inicio</span>
+                        </a>
+
+                    </li>
+-->
+
+
+                    <!--Fin Parametrizar -->
+
+
+                    <li>
+                        <a id="Buscar" href=""
+                            class="btn btn-w-m btn-outline btn-default ">
+                            <i class="fa  fa-desktop fa-2x pull-left"></i>
+                            <span class="nav-label">Escritorio</span>
+                        </a>
+
+                    </li>
+                    <li>
+
+                        <a href="#" id="dtap_inbox"   class="btn btn-w-m btn-outline btn-default ">
+                            <i class="fa fa fa-cogs fa-2x pull-left"></i>
+                            <span class="nav-label ">Inbox</span>
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a id="dtap_wizard" href="/felix"
+                            class="btn btn-w-m btn-outline btn-default ">
+                            <i class="fa  fa-pencil-square-o fa-2x pull-left"></i>
+                            <span class="nav-label "> New Tracing </span>
+                        </a>
+
+                    </li>
+
+                    <!--li>
+
+                        <a id="dtap_linaje" href=""
+                            class="btn btn-w-m btn-outline btn-default ">
+                            <i class="fa  fa-pencil-square-o fa-2x pull-left"></i>
+                            <span class="nav-label ">New Lineage</span>
+                        </a>
+
+                    </li-->
+
+
+
+
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+
+        <div style="clear: both;width: 100%;border-top: 6px solid #BBBBBB;margin-bottom: 0px;height: 10.25px;"></div>
+
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+
+
+
+            <div class="row border-bottom">
+                <nav class="navbar " role="navigation" style="margin-bottom: 0px; background:rgb(255, 255, 255);">
+                    <div class="navbar-header">
+
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right" >
+                        <li>
+                            <h3>
+                                Data Tracing Automation Process
+                            </h3>
+
+                        </li>
+                        </li>
+
+
+                        <li>
+                            <a  href="static/core/index.html">
+                                <i class="fa fa-sign-out"></i> Salir
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        
+
+            <!-- Inicia escritorio -->
+            {% block contenido %}
+
+
+
+            {% endblock %}
+            <!-- Fin de escritorio -->
+
+
+            <div class="ir-arriba" style="display: block;"><img src="static/core/images/arrows.png" style="height: 30px;">
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+ 
+
+
+
+            <!-- Mainly scripts -->
+            <script src="static/core/js/jquery-2.1.1.js"></script>
+            <script src="static/core/js/bootstrap.min.js"></script>
+            <script src="static/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+            <script src="static/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+            <!-- FooTable -->
+            <script src="static/core/js/plugins/footable/footable.all.min.js"></script>
+
+            <!-- Flot -->
+            <script src="static/core/js/plugins/flot/jquery.flot.js"></script>
+            <script src="static/core/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+            <script src="static/core/js/plugins/flot/jquery.flot.spline.js"></script>
+            <script src="static/core/js/plugins/flot/jquery.flot.resize.js"></script>
+            <script src="static/core/js/plugins/flot/jquery.flot.pie.js"></script>
+
+            <!-- Peity  
+    <script src="static/core/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="static/core/js/demo/peity-demo.js"></script>
+
+    -->
+
+            <!-- Custom and plugin javascript  -->
+            <script src="static/core/js/inspinia.js"></script>
+            <script src="static/core/js/plugins/pace/pace.min.js"></script>
+
+            <!-- jQuery UI -->
+            <script src="static/core/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+            <!-- GITTER -->
+            <script src="static/core/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+            <!-- Sparkline -->
+            <script src="static/core/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+
+            <!-- Sparkline demo data
+    <script src="static/core/js/demo/sparkline-demo.js"></script>
+  -->
+
+            <!-- ChartJS-->
+            <script src="static/core/js/plugins/chartJs/Chart.min.js"></script>
+
+            <!-- Toastr -->
+            <script src="static/core/js/plugins/toastr/toastr.min.js"></script>
+
+            <!-- DROPZONE -->
+
+            <!--     
+    <script src="static/core/js/plugins/dropzone/dropzone.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  -->
+
+
+
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+
+            <!-- Sparkline demo data  -->
+            <script src="static/core/js/plugins/flot/jquery.flot.time.js"></script>
+
+            <script src="static/core/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+
+            <script>
+
+                $("body").click(function (e) {
+                    if ((e.target.id === "cargaotravez") || (e.target.id === "cargaotravezicon") || (e.target.id === "cargaotravezspan")) {
+                        window.location.href = "ptma_opcd.php";
+                    }
+
+                }); 
+            </script>
+
+            <script>
+
+                $('#ifomope').click(function () {
+
+                    $.confirm({
+                        icon: 'fa fa-check-circle fa-2x fa-fw',
+                        title: 'Data Tracing Automation Process',
+                        content: '',
+                        type: 'green',
+                        buttons: {
+                            Aceptar: function () {
+                            },
+                            cancelar: function () {
+                                console.log('Cancelo Impresion');
+                            }
+                        }
+                    });
+
+
+                });
+
+
+
+
+                $('#smweb-ingreso').click(function () {
+
+
+                    $.post('escritorio.html', { "id": 1, "pzavteid": 123 },
+                        function (response, status) {
+                            //alert(response);
+                            var string = response;
+                            $('#main_page').html(response);
+                        }// fin function
+                    ); // fin post
+
+
+
+
+
+                });
+
+                $('#dtap_linaje').click(function () {
+                    console.log('dtap_linaje');
+                    $.post('dtap_lineage.html', { "id": 1, "pzavteid": 123 },
+                        function (response, status) {
+                            //alert(response);
+                            var string = response;
+                            $('#main_page').html(response);
+                        }// fin function
+                    ); // fin post
+
+                });
+
+
+                $('#dtap_wizard').click(function () {
+                    console.log('dtap_linaje');
+                    $.post('dtap_wizard.html', { "id": 1, "pzavteid": 123 },
+                        function (response, status) {
+                            //alert(response);
+                            var string = response;
+                            $('#main_page').html(response);
+                        }// fin function
+                    ); // fin post
+
+                });
+
+
+
+
+            </script>
+
+
+
+            <!-- ace scripts -->
+            <script src="static/core/css/assets/js/ace-elements.min.js"></script>
+            <script src="static/core/css/assets/js/ace.min.js"></script>
+
+            <!-- EayPIE -->
+            <script src="static/core/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+
+
+
+
+            <!-- Jvectormap -->
+            <script src="static/core/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+            <script src="static/core/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+
+            <script src="static/core/js/plugins/jqGrid/i18n/grid.locale-en.js"></script>
+            <script src="static/core/js/plugins/jqGrid/jquery.jqGrid.min.js"></script>
+
+
+            <!-- Steps -->
+            <script src="static/core/js/plugins/staps/jquery.steps.min.js"></script>
+
+            <!-- Jquery Validate -->
+            <script src="static/core/js/plugins/validate/jquery.validate.min.js"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+
+
+
+</body>
+
+<script>
+
+    		$('#dtap_inbox').click(function(){
+			console.log('dtap_linaje');
+			$.post('/inbox', { "id": 1, "pzavteid":123 },
+                  function(response,status) {
+                        var string = response;
+                        $('#page-wrapper').html(response);
+                  }// fin function
+             ); // fin post
+
+		});
+
+
+
+</script>
+
+</html>

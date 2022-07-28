@@ -1,0 +1,844 @@
+{% extends "dt_menu.html" %}
+{% block contenido %}
+
+<link rel="stylesheet" type="text/css" href="static/core/css/smart_wizard_arrows.css" />
+<link rel="stylesheet" type="text/css" href="static/core/css/jquery.dataTables.min.css" />
+
+
+<script src="static/core/js/plugins/staps/jquery.steps.min.js"></script>
+<link href="static/core/css/plugins/footable/footable.core.css" rel="stylesheet">
+
+
+
+<style>
+    /* Estilo tablas*/
+    .table-rwd {
+        font-size: .85em;
+        border: 1px solid rgba(181, 213, 144, 0.5);
+        color: #666;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .table-rwd td,
+    .table-rwd th {
+        height: 10px;
+        padding: .8em;
+        border-bottom: 1px solid rgba(181, 213, 144, 0.5);
+    }
+
+    .table-rwd th {
+
+        color: rgb(2, 2, 2);
+        font-weight: normal;
+        text-align: center;
+    }
+
+    .table-rwd td {
+        text-align: center;
+        padding: 0;
+    }
+
+    .table-rwd tr:hover {
+        background: rgba(157, 170, 142, 0.2);
+    }
+
+    .table-rwd tr td:nth-child(odd) {
+        background: rgba(230, 241, 214, 0.2);
+    }
+
+    .table-rwd tr td:nth-child(even) {
+        background: rgba(181, 213, 144, 0.2);
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .table-rwd {
+        min-width: 900px;
+        min-height: 10px;
+    }
+
+    /* Fin tablas*/
+
+    /*:::Boton-Modal:::*/
+    .boton-modal {
+        width: 100%;
+        padding: auto;
+
+    }
+
+    .boton-modal label {
+        padding: auto;
+        background-color: #5488a3;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 300ms ease;
+        font-size: 10px;
+
+    }
+
+    .boton-modal label:hover {
+        background-color: #185E83;
+    }
+
+    /*:::Fin Boton-Modal:::*/
+
+    /*:::Ventana Modal:::*/
+    #btn-modal {
+        display: none;
+    }
+
+    #btn-modal1 {
+        display: none;
+    }
+
+    .container-modal {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(144, 148, 150, 0.2);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    #btn-modal:checked~.container-modal {
+        display: flex;
+    }
+
+    #btn-modal1:checked~.container-modal {
+        display: flex;
+    }
+
+    .content-modal {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 4px;
+    }
+
+    .content-modal h2 {
+        margin-bottom: 15px;
+    }
+
+    .content-modal p {
+        padding: 15px 0px;
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+    .content-modal .btn-cerrar {
+        width: 50%;
+        display: flex;
+    }
+
+    .content-modal .btn-cerrar label {
+        padding: 7px 10px;
+        background-color: #80ad16;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 300ms ease;
+    }
+
+    .content-modal .btn-cerrar label:hover {
+        background-color: #5a7244;
+    }
+
+    .content-modal .btn-cerrar1 {
+        width: 50%;
+        display: flex;
+    }
+
+    .content-modal .btn-cerrar1 label {
+        padding: 7px 10px;
+        background-color: #80ad16;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 300ms ease;
+    }
+
+    .content-modal .btn-cerrar1 label:hover {
+        background-color: #5a7244;
+    }
+
+    @media screen and (max-width:800px) {
+        .content-modal {
+            width: 90%;
+        }
+    }
+
+    /*:::Fin Ventana Modal:::*/
+    /* formato seleccion de archivo */
+    .file-select {
+        position: relative;
+        display: inline-block;
+    }
+
+    .file-select::before {
+        background-color: #8f9599;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        content: 'Seleccionar';
+        /* testo por defecto */
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .file-select input[type="file"] {
+        opacity: 0;
+        width: 130px;
+        height: 32px;
+        display: inline-block;
+    }
+
+    :root {
+        --fn: 'Seleccionar archivo';
+    }
+
+    .file-select::before {
+        white-space: nowrap;
+        content: var(--fn);
+    }
+
+    /*Fin seleccion de archivo*/
+</style>
+<div class="row">
+
+</div>
+
+<ul class="nav nav-pills text-center" id="menumenu">
+    <li class="nav-item" style="width:30%"><a class="nav-link" href="#tab1" data-toggle="tab">
+            <h4>Configuración</h4>
+        </a></li>
+    <!--li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">
+                <h4>Data Set</h4>
+            </a></li-->
+    <li class="nav-item" style="width:30%"><a class="nav-link" href="#tab3" data-toggle="tab">
+            <h4>Custom Data Set</h4>
+        </a></li>
+    <li class="nav-item" style="width:30%"><a class="nav-link" href="#tab4" data-toggle="tab">
+            <h4>Customer Data</h4>
+        </a></li>
+</ul>
+<!--  Inicio tab -->
+
+<div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+        <h2> Regulatory Data Tracing Process Configuration</h2>
+
+        <div class="row">
+            <div class="col-sm-6">
+
+                <div class="profile-info-name blue"> </div>
+                <div class="profile-info-value col-xs-12 ">
+                    <div class="menu">
+                        ​<a class="fa fa-question-circle" data-toggle="tooltip"
+                            title="Ingresa el nombre del ejercicio"></a>
+                    </div>
+                    <div class="input-group">
+
+                        <span class="input-group-addon">
+                            <i class="blue fa fa-key fa-lg"></i>
+                            <span>
+                                Data Tracing Name
+                            </span>
+                        </span>
+                        <div class="form-group">
+                            <input type="text" value="" id="inputUsuario" name="inputUsuario"
+                                class="form-control required" placeholder="Id Data Tracing Event" required=""
+                                autofocus="">
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-info-name blue"> </div>
+
+                <div class="profile-info-value col-xs-12 ">
+                    <div class="menu">
+                        ​<a class="fa fa-question-circle" data-toggle="tooltip"
+                            title="Ingresa el nombre del reporte a realizar"></a>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="blue fa fa-key fa-lg"></i>
+                            <span>
+                                Reporte
+                            </span>
+                        </span>
+                        <div class="form-group">
+                            <input type="text" value="" id="inputUsuario" name="inputUsuario"
+                                class="form-control required" placeholder="Report Name" required="" autofocus="">
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-info-name blue"> </div>
+
+                <div class="profile-info-value col-xs-12 ">
+                    <div class="menu">
+                        ​<a class="fa fa-question-circle" data-toggle="tooltip"
+                            title="Ingresa el nombre del dueño del reporte"></a>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="blue fa fa-user fa-lg"></i>
+                            <span>
+                                Report Owner
+                            </span>
+                        </span>
+                        <div class="form-group">
+                            <input type="text" value="" id="inputUsuario" name="inputUsuario"
+                                class="form-control required" placeholder="Report Owner">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-5">
+                <div class="text-center">
+                    <div style="margin-top: 20px">
+                        <i class="fa fa-gears" style="font-size: 180px;color: #e5e5e5 "></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div><a class="btn btn-primary" id="btnNext">Enviar</a></div>
+
+    </div>
+
+    <div class="tab-pane" id="tab3">
+        <h2>Selección Personalizada de Datos</h2>
+        <div class="form-group">
+            <div class="container ">
+                <div class="row">
+
+                    <div class="col-xs-9">
+                        <div class="col-sm-1">
+                            <i class="green fa fa-file-excel-o fa-3x"></i>
+                        </div>
+                        <div class="col-sm-5">
+                            <input class="form-control" type="file" id="cargarexcel" accept=".xls,.xlsx"
+                                style="font-size: 13px; width: 100% ;color: #525252" />
+                        </div>
+                        <div class="col-sm-1" style="width: 50% ">
+                            <button class="btn btn-primary btn-md" id="btncargar" title="Cargar archivo"
+                                style="font-size: 8px;"><i class="fa fa-upload fa-2x"> &nbsp;&nbsp;Cargar
+                                    archivo</i></button>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <label class="btn btn-success" for="btn-modal" title="Llenar formulario"
+                                style="font-size: 8px;">
+                                <i class="fa fa-file-text-o fa-2x"> &nbsp;&nbsp;Registrar datos</i>
+                            </label>
+                        </div>
+                        <div class="col-sm-1">
+                            <!-- Inicio Ventana Modal Formulario-->
+                            <input type="checkbox" id="btn-modal">
+                            <div class="container-modal">
+                                <div class="content-modal">
+                                    <h3 clas="modal-title"><img src="static/core/images/formulario.png"
+                                            style="height: 100px;">&nbsp;&nbsp;
+                                        Registro de datos</h3>
+
+                                    <div class="row">
+
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>Cuenta encriptada</label>
+                                            <input type="text" id="encriptada1" class="form-control"
+                                                style="width:100%;">
+                                        </div>
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>Producto</label>
+                                            <input type="text" id="producto1" class="form-control" style="width:100%;">
+                                        </div>
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>Codigo del país</label>
+                                            <input type="text" id="pais1" class="form-control" style="width:100%;">
+                                        </div>
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>Fecha de la revisión</label>
+                                            <input type="date" id="fecha1" class="form-control" style="width:100%;">
+                                        </div>
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>FEED ID</label>
+                                            <input type="text" id="feed_id1" class="form-control" style="width:100%;">
+                                        </div>
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>Nombre de los atributos</label>
+                                            <input type="text" id="atributo1" class="form-control" style="width:100%;">
+                                        </div>
+                                        <div class="profile-info-value col-xs-12 ">
+                                            <label>Valor</label>
+                                            <input type="text" id="valor1" class="form-control" style="width:100%;">
+                                        </div>
+
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <button id="adicionar" class="btn btn-primary "
+                                                style="border-radius: 4px; padding:3%; ">Cargar
+                                                datos</button>&nbsp;&nbsp;
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-4 btn-cerrar">
+                                            <label for="btn-modal">Cerrar</label>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Fin de Ventana Modal-->
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="text-center">
+                            <div style="margin-top: 1px">
+                                <i class="fa fa-gears" style="font-size: 90px;color: #e5e5e5 "></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" id="tabla1" style="display: none">
+                    <!--div><a class="btn btn-sm" id="btnoculto" title="Ocultar tabla" style="font-size: 10px;">
+                            <i class="fa fa-eye-slash">&nbsp;</i></a></div-->
+                    <table id="tabtemporal" class="table table-bordered table-rwd" style="width: 100%;">
+                        <thead>
+                            <tr id="ltptr">
+                                <th>Cuenta encriptada</th>
+                                <th>Producto</th>
+                                <th>Codigo del país</th>
+                                <th>Fecha de la revisión</th>
+                                <th>FEED ID</th>
+                                <th>Nombre de los atributos</th>
+                                <th>Valor</th>
+                                <!--th>Tipo de LTP &nbsp; <a class="fa fa-question-circle" data-bs-toggle="tooltip" title="Archivo contra el cual se compara el resultado de los valores obtenidos ej. 
+                                    estado de cuenta"></a>
+                                </th>
+                                <th>Extraer</th>
+                                <th>Carga manual</th-->
+                            </tr>
+                        </thead>
+                        <tbody id="tbody1">
+                            {% for bdtabla in tablas %}
+                            <tr>
+                                <td>{{ bdtabla.Cuenta_encriptada }}</td>
+                                <td>{{ bdtabla.Producto }}</td>
+                                <td>{{ bdtabla.Codigo_del_pais }}</td>
+                                <td>{{ bdtabla.fecha_de_la_revision }}</td>
+                                <td>{{ bdtabla.FEED_ID }}</td>
+                                <td>{{ bdtabla.Nombre_de_los_atributos }}</td>
+                                <td>{{ bdtabla.Valor }}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Mostrar y ocultar tabla-->
+                <script>
+                    $(document).ready(function () {
+                        $("#btncargar").on('click', function () {
+                            $("#tabla1").show();
+                            return false;
+                        });
+                        $("#adicionar").on('click', function () {
+                            $("#tabla1").show();
+                            return false;
+                        });
+                        $("#btnoculto").on('click', function () {
+                            $("#tabla1").hide();
+                            return false;
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-primary btn-sm " id="btncancela">Cancelar</a>
+            <a class="btn btn-primary btn-sm " id="enviartabla">Enviar</a>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="tab4">
+        <h2>Customer Data</h2>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="tabtemporal2" class="footable table table-stripped toggle-arrow-tiny table-rwd">
+                            <thead>
+                                <tr>
+                                    <th data-toggle="true">Cuenta encriptada</th>
+                                    <th>Producto</th>
+                                    <th data-hide="all">Codigo del país</th>
+                                    <th>Fecha de la revisión</th>
+                                    <th>FEED ID</th>
+                                    <th>Nombre de los atributos</th>
+                                    <th>Valor</th>
+                                    <th data-hide="all">Subproducto</th>
+                                    <th>Instrumento</th>
+                                    <th data-hide="all">Descripción del producto</th>
+                                    <th>Numero de cliente</th>
+                                    <th data-hide="all">Nombre del cliente</th>
+                                    <th>Estatus de la cuenta</th>
+                                    <th>Documentos requeridos</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>1 dfsfjioosf</td>
+                                    <td>2 09843kldf</td>
+                                    <td>3 0000000</td>
+                                    <td>4 kljdf asil </td>
+                                    <td>5000000000</td>
+                                    <td>6k lkvsfdz </td>
+                                    <td>7 0000000</td>
+                                    <td>8iisfi34234ijio</td>
+                                    <td>9 00000000</td>
+                                    <td>10 opqw788b 87s 789</td>
+                                    <td>11 0000000</td>
+                                    <td>12 pó´sero8796</td>
+                                    <td>13 000000</td>
+                                    <td><label id="docreq" class="btn btn-success" for="btn-modal1"
+                                            title="Buscar documento" style="padding: 2px 10px 2px 10px;">
+                                            <i class="fa fa-search"></i>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- Inicio Ventana Modal Formulario-->
+                    <input type="checkbox" id="btn-modal1">
+                    <div class="container-modal">
+                        <div class="content-modal">
+                            <h3 clas="modal-title"><img src="static/core/images/formulario.png"
+                                    style="height: 50px; width: 55px;">&nbsp;&nbsp;
+                                Documentos Requeridos</h3>
+
+                            <div class="form-group">
+                                <table class="table table-hover " WIDTH="70%" HEIGHT="25%">
+                                    <tr>
+                                        <th><label>KYC</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo"
+                                                enctype="multipart/form-data">
+                                                <input type="file" name="dc" id="" multiple accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Customer Statement</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Account Openning</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Exchange Rate</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Systems Screenshots</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Account Agreement</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Collateral Class</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Lineage</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th><label>Otros</label></th>
+                                        <td>
+                                            <div class="file-select" id="dc" aria-label="archivo">
+                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div> <br>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <button id="" class="btn btn-primary "
+                                        style="border-radius: 4px; padding:3%; ">Guardar</button>&nbsp;&nbsp;
+                                </div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4 btn-cerrar1">
+                                    <label for="btn-modal1">Cerrar</label>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function actualizarInputFile() {
+                            var filename = "'" + this.value.replace(/^.*[\\\/]/, '') + "'";
+                            this.parentElement.style.setProperty('--fn', filename);
+                        }
+
+                        document.querySelectorAll(".file-select input").forEach((ele) => ele.addEventListener('change', actualizarInputFile));
+                    </script>
+                    <!--Fin de Ventana Modal-->
+                </div>
+            </div>
+        </div>
+
+
+        <a class="btn btn-primary" id="btnPrevious2">Previous</a>
+        <!-- Ventana modal documentos requeridos-->
+
+    </div>
+
+</div>
+
+<!--Script botones menu-->
+<script>
+    $('#btnNext').click(function () {
+        $('#menumenu > .active').next('li').find('a').trigger('click');
+    });
+
+    $('#btncancela').click(function () {
+        var table = $('#tabtemporal').DataTable();
+        table.clear().draw();
+        table.destroy();
+    });
+</script>
+<!-- Fin tab -->
+<script src="static/core/js/plugins/jqGrid/i18n/grid.locale-en.js"></script>
+<script src="static/core/js/plugins/jqGrid/jquery.jqGrid.min.js"></script>
+
+<script type="text/javascript" src="static/core/js/datatables.min.js"></script>
+<script type="text/javascript" src="static/core/js/xlsx.full.min.js"></script>
+
+<!-- Inicio script cargar formulario en tabla temporal-->
+<script>
+    $(document).ready(function () {
+        $('#adicionar').click(function () {
+            var reg0 = document.getElementById("encriptada1").value;
+            var reg1 = document.getElementById("producto1").value;
+            var reg2 = document.getElementById("pais1").value;
+            var reg3 = document.getElementById("fecha1").value;
+            var reg4 = document.getElementById("feed_id1").value;
+            var reg5 = document.getElementById("atributo1").value;
+            var reg6 = document.getElementById("valor1").value;
+            var i = 1;
+            var fila = '<tr id="ltptr' + i + '"><td>' + reg0 + '</td><td>' + reg1 + '</td><td>' + reg2 + '</td><td>' + reg3 + '</td><td>' + reg4 + '</td><td>' + reg5 + '</td><td>' + reg6 + '</td></tr>';
+            /*'<td><select id="tablaltp" style="width:auto">' +
+            '<option value="">Seleccciona</option><option value="">Estado de cuenta</option>' +
+            '<option value="">Contrato</option><option value="">Tarjeta de crédito</option>' +
+            '<option value="">KYC</option><option value="">PP</option>' +
+            '</select></td>' +
+            '<td><a class="btn btn-success btn-sm" href="#" role="button"'+
+            'onclick="window.open("", "popup", "top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO")"'+
+            'rel="nofollow">Conectar</a></td>' +
+            '<td><input type="file" class="file" multiple="true" data-preview-file-type="any"></td></tr>';*/
+            i++;
+            $('#tabtemporal tr:first').after(fila);
+            var nFilas = $("#tabtemporal tr").length;
+            document.getElementById("encriptada1").value = " ";
+            document.getElementById("producto1").value = " ";
+            document.getElementById("pais1").value = " ";
+            document.getElementById("fecha1").value;
+            document.getElementById("feed_id1").value = " ";
+            document.getElementById("atributo1").value = " ";
+            document.getElementById("valor1").value = " ";
+
+        });
+    });
+
+</script>
+<!-- Fin script cargar formulario en tabla temporal-->
+
+<!-- Inicio  script cargar excel en tabla temporal-->
+<script>
+    let selectedFile;
+    let data = [];
+    //console.log(window.XLSX);
+    document.getElementById('cargarexcel').addEventListener("change", (event) => {
+        selectedFile = event.target.files[0];
+    })
+
+    document.getElementById('btncargar').addEventListener("click", () => {
+        XLSX.utils.json_to_sheet(data, 'out.xlsx');
+        if (selectedFile) {
+            let fileReader = new FileReader();
+            fileReader.readAsBinaryString(selectedFile);
+            fileReader.onload = (event) => {
+                let data = event.target.result;
+                let workbook = XLSX.read(data, { type: "binary" });
+                //console.log(workbook);
+                workbook.SheetNames.forEach(sheet => {
+                    let rowObject = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+                    data = rowObject;
+                    //console.log("json", data);
+                    //datos1= document.getElementById("jsondata").innerHTML = JSON.stringify(rowObject,undefined,4)
+                });
+                console.log("datos", data)
+
+                $(document).ready(function () {
+                    $.noConflict();
+                    var table = $("#tabtemporal").DataTable({
+                        language: {
+                            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                        },
+                        columns: [
+                            {
+                                data: "Cuenta_encriptada"
+                            },
+                            {
+
+                                data: "Producto"
+                            },
+                            {
+
+                                data: "Codigo_del_pais"
+                            },
+                            {
+
+                                data: "fecha_de_la_revision",
+                                type: "date"
+                            },
+                            {
+
+                                data: "FEED_ID"
+                            },
+                            {
+
+                                data: "Nombre_de_los_atributos"
+                            },
+                            {
+
+                                data: "Valor"
+                            },
+                            /*{
+
+                                defaultContent: `<select id="LTP" style="width:auto">
+                                                    <option value="">Seleccciona</option>
+                                                    <option value="">Estado de cuenta</option>
+                                                    <option value="">Contrato</option>
+                                                    <option value="">Tarjeta de crédito</option>
+                                                    <option value="">KYC</option>
+                                                    <option value="">PP</option>
+                                                    </select>`
+
+                            },
+                            {
+
+                                defaultContent: `<a class="btn btn-success btn-sm" href="#" role="button"
+                                                    onclick="window.open('', 'popup', 'top=100, left=200, width=400, height=100, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')"
+                                                    rel="nofollow">Conectar</a></p>`
+
+                            },
+                            {
+
+                                defaultContent: `
+                                                    <div class="profile-info-row">
+                                                        <input id="archivo-2" name="documentos" type="file" class="file" multiple=true
+                                                            data-preview-file-type="any">
+                                        
+                                                        <div class="profile-info-value col-xs-6 ">
+                                                            <span>
+                                                                <div class="col-xs-12">
+                                        
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </div>`
+
+                            },*/
+                        ]
+                    });
+
+                    setTimeout(() => {
+                        table.rows.add(data).draw();
+                    }, 1000);
+                });
+            }
+        }
+
+    });
+    $(document).ready(function () {
+        $.noConflict();
+        $('#tabtemporal2').DataTable({
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+            },
+        });
+    });
+</script>
+<!-- Fin  script cargar excel en tabla temporal-->
+
+
+<script type="text/javascript" src="static/core/js/datatables.min.js"></script>
+<script type="text/javascript" src="static/core/js/xlsx.full.min.js"></script>
+
+<script src="static/core/js/plugins/footable/footable.all.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.footable').footable();
+        $('.footable2').footable();
+
+    });
+</script>
+
+
+{% endblock %}

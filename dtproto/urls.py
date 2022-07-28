@@ -29,12 +29,15 @@ urlpatterns = [
     path('inbox', views.inbox, name="inbox"),
     path('upload', views.upload, name="upload"),
     path('do_ini', views.do_ini, name="do_ini"),
+    path('do_full', views.do_full, name="do_full"),
     path('do_dropzone', views.do_dropzone, name="do_dropzone"),
     path('lineage', views.lineage, name="lineage"),
+    path('main', views.main, name="main"),
     path('wizard', ltp_views.wizard, name="wizard"),
     path('send', ltp_views.send, name="send"),
     path('lineage', lineage_views.lineage, name="lineage"),
     path('jqgrid', lineage_views.jqgrid, name="jqgrid"),
+    path('felix', views.felix, name="felix"),
 ]
 
 if settings.DEBUG:

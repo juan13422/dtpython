@@ -7,7 +7,12 @@
 		    <meta charset="utf-8">
 		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		    <title>Data Tracing</title>
+		    <title>
+                {% block titulo %}
+                {%  endblock %}
+
+
+            </title>
             {% load static %}
               <script src="{% static 'core/js/jquery-2.1.1.js' %}"></script>
 		    <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -1608,7 +1613,7 @@ var contenido = ' ';
 			$.post('/inbox', { "id": 1, "pzavteid":123 },
                   function(response,status) {
                         var string = response;
-                        $('#main_page').html(response);
+                        // $('#main_page').html(response);
                   }// fin function
              ); // fin post
 

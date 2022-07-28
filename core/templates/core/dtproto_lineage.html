@@ -1,5 +1,10 @@
 {% extends 'dtproto_base.html' %}
 
+                {% block titulo %}
+                 LINEAGE
+                {%  endblock %}
+
+
 {% block content %}
 <!-- formulario -->
 <!-- ////////////////////////////////Script para funcionamiento del modal LOG ///////////////////////////-->
@@ -59,11 +64,13 @@
                 <div class="col-lg-12" style="  padding-left:0px;"\>
                     <div class="ibox">
                         <div class="ibox-title">
-                        <h5>1  &nbsp;&nbsp;&nbsp; </h5>
-                            <h5>Data Tracing Process</h5>
+                        <h5>ROL/  &nbsp;&nbsp;&nbsp; </h5>
+                            <h5>LINEAGE</h5>
+                            <!--
                             <div class="ibox-tools">
                                 <a href="" class="btn btn-primary btn-xs">06-Mayo-2022</a>
                             </div>
+                            -->
                         </div>
                         <div class="ibox-content">
 
@@ -102,7 +109,7 @@
                         Total
                     </a>
                 </li>
-
+<!--
                 <li>
                     <a data-toggle="tab" href="#feed">
                         <i class="green ace-icon fa fa-check bigger-220"></i>
@@ -123,6 +130,8 @@
                         Diferencias
                     </a>
                 </li>
+
+-->
             </ul>
 
             <div class="tab-content no-border padding-24">
@@ -147,7 +156,7 @@
                                     </td>
 
                                     <td class="issue-info">
-                                        <a href="#" id="href-rfc1">
+                                        <a href="#" id="ipen-lineage">
                                             RWA 02 ESTADO DE CUENTA ORO
                                         </a>
 
@@ -160,7 +169,7 @@
                                         Juan Lopez Arellano
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary dim" type="button"><i class="fa fa-check"></i></button>
+                                        <button  id="form_stat"  class="btn btn-primary dim" type="button"><i class="fa fa-check"></i></button>
                                     </td>
 <!-- //////////////////////////////////      LOG  codigo del modal   //////////////////////////////                -->
                                     <td>
@@ -2002,6 +2011,166 @@ $('#EnviarReporte').click(function(){
        }
 	}
 );
+
+
+
+
+     $('#ipen-lineage').click(function(){
+
+            //alert ('Estatus de la Validacion');
+
+            var contenido= '<script>'+
+
+
+'$(\'#DTLp\').text(\'Se ha realizado la carga y validacion de datos Inicial para poder continuar con el ejercicio\');'+
+'$(\'#DTLpaso2\').click(function(){'+
+'console.log(\'Se activo el paso3 moba\');'+
+'$(\'#DTLp\').text(\'EL Data Steward se encarga de complementar la informaciòn agregando los datos de las cuentas asi como documentos LTP\');'+
+' });'+
+
+'$(\'#DTLpaso3\').click(function(){'+
+'console.log(\'Se activo el paso3 moba\');'+
+'$(\'#DTLp\').text(\'El data Steward complementa la informacion con tipos de LTP, fechas inicio y fin del ejercicion y documentacion en formato PDF\');'+
+' });'+
+
+'$(\'#DTLpaso4\').click(function(){'+
+'console.log(\'Se activo el paso4 moba\');'+
+'$(\'#DTLp\').text(\'El equipo de Lineaje se encarga de realizar validacion de los atributos y determinar el resultado del ejercicio\');'+
+' });'+
+'<\/script>' +
+
+          '<div>'+
+'                                                   <ul class="steps" style="margin-left: 0">'+
+'                                                       <li data-step="1" class="complete">'+
+'                                                           <span class="step">1</span>'+
+'                                                           <span class="title">Data Owner</span>'+
+'                                                       </li>'+
+''+
+'                                                       <li data-step="2" class="complete">'+
+'                                                           <span class="step" id="DTLpaso2" >2</span>'+
+'                                                           <span class="title">Data Steward</span>'+
+'                                                       </li>'+
+''+
+'                                                       <li data-step="3"  class="complete">'+
+'                                                           <span class="step" id="DTLpaso3" >3</span>'+
+'                                                           <span class="title">Data Steward</span>'+
+'                                                       </li>'+
+''+
+'                                                       <li data-step="4"  class="active">'+
+'                                                           <span class="step" id="DTLpaso4" style="border-color:#f3ee54;">4</span>'+
+'                                                           <span class="title">Lineage</span>'+
+'                                                       </li>'+
+'                                                   </ul>'+
+'                                               </div> <hr>'  +
+'<p id="DTLp" class="alert alert-info ">' +
+ '  Se ha realizado la carga y validacion de datos Inicial para poder continuar con el ejercicio' +
+  '                                                       </p> '  ;
+
+
+
+
+               $.alert({
+                icon: 'fa fa-clock-o fa-2x fa-fw',
+                title: 'Data Tracing Lineage',
+                content: contenido,
+                columnClass: 'medium',
+                animationSpeed:800,
+                animationBounce:1,
+                animation: 'zoom',
+                closeAnimation: 'zoom',
+                 animationBounce: 1.5,
+                animateFromElement: false,
+                theme: 'material',
+                type: 'blue',
+                buttons: {
+                    Aceptar: {
+                         btnClass: 'btn-green',
+                         action:function () {
+                        }
+                    }
+                }
+            });
+
+
+        });
+
+
+
+
+
+
+
+     $('#form_stat').click(function(){
+
+            //alert ('Estatus de la Validacion');
+
+            var contenido=
+
+'<div class="ibox-content">'+
+'                        <div class="row">'+
+'                            <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Confirmacion</h3>'+
+'                                <p>Con esta accion se confirma los resultados</p>'+
+'                                <form role="form">'+
+'                                    <div class="form-group"><label>Comentarioa</label> <input type="textarea" placeholder="Comentarios" class="form-control"></div>'+
+
+'                                    <div>'+
+
+
+'<div class="profile-user-info">'+
+'	<div class="profile-info-row">'+
+'		<div class="profile-info-name blue"> '+
+'		</div>'+
+'			<div class="profile-info-value col-xs-12 ">'+
+'				<span>'+
+'					<label id="switch-p">'+
+'						<input id="iswitch-p" name="switch-field-1" class="green  ace ace-switch ace-switch-6 " type="checkbox">'+
+
+'						<span class="lbl">'+
+'							<span>'+
+'								<span class="label label-lg label-info arrowed arrowed-left">APROBADO'+
+'								</span>'+
+'							</span>'+
+'						</span>'+
+
+'					</label>'+
+'				</span>'+
+'			</div>'+
+'	</div>'+
+'</div>'+
+
+'                                </form>'+
+'                           </div>'+
+'                        </div>'+
+'                    </div>';
+
+
+
+               $.alert({
+                icon: 'fa fa-info-circle fa-2x fa-fw',
+                title: 'Data Tracing Validation',
+                content: contenido,
+                columnClass: 'medium',
+                animationSpeed:800,
+                animationBounce:1,
+                animation: 'zoom',
+                closeAnimation: 'zoom',
+                 animationBounce: 1.5,
+                animateFromElement: false,
+                theme: 'material',
+                type: 'blue',
+                buttons: {
+                    Aceptar: {
+                         btnClass: 'btn-green',
+                         action:function () {
+                        }
+                    }
+                }
+            });
+
+
+   });
+
+
 
 
 

@@ -26,7 +26,7 @@ def ruteo(request):
         html_file = "core/dtproto_main.html"
     else:   #Data owner
         if Usr.lower() == "do@citi.com":
-            html_file = "core/dtproto_do.html"
+            html_file = "core/dtproto_do_empty.html"
         else:
             # Lineage
             if Usr.lower() == "lineage@citi.com":
@@ -57,8 +57,14 @@ def upload(request):
 
 @csrf_exempt
 def do_ini(request):
+    html_file = "core/dtproto_do_empty.html"
+    return render(request, html_file)
+@csrf_exempt
+def do_full(request):
     html_file = "core/dtproto_do.html"
     return render(request, html_file)
+
+
 @csrf_exempt
 def do_dropzone(request):
     html_file = "core/dtproto_do_dz.html"
@@ -67,4 +73,15 @@ def do_dropzone(request):
 @csrf_exempt
 def lineage(request):
     html_file = "core/dtproto_lineage.html"
+    return render(request, html_file)
+
+
+@csrf_exempt
+def main(request):
+    html_file = "core/dtproto_main.html"
+    return render(request, html_file)
+
+@csrf_exempt
+def felix(request):
+    html_file = "core/prototipo_ntr.html"
     return render(request, html_file)

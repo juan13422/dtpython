@@ -102,7 +102,7 @@
                         Total
                     </a>
                 </li>
-
+<!--
                 <li>
                     <a data-toggle="tab" href="#feed">
                         <i class="green ace-icon fa fa-check bigger-220"></i>
@@ -123,6 +123,7 @@
                         Diferencias
                     </a>
                 </li>
+-->
             </ul>
 
             <div class="tab-content no-border padding-24">
@@ -143,11 +144,11 @@
                                 <tr>
 
                                     <td>
-                                        <span class="label label-success arrowed" style="font-size:15px" >Aprobado</span>
+                                        <span class="label label-dafault arrowed" style="font-size:15px" >Proceso</span>
                                     </td>
 
                                     <td class="issue-info">
-                                        <a href="#" id="href-rfc1">
+                                        <a href="#" id="ipen">
                                             RWA 02 ESTADO DE CUENTA ORO
                                         </a>
 
@@ -160,7 +161,9 @@
                                         Juan Lopez Arellano
                                     </td>
                                     <td>
-                                        12.02.2022 10:00 am
+                                         <button id="form_stat" class="btn btn-success dim" type="button">
+                                            <i class="fa fa-check"></i></button>
+
                                     </td>
 <!-- //////////////////////////////////      LOG  codigo del modal   //////////////////////////////                -->
                                     <td>
@@ -511,7 +514,7 @@
                                     </td>
 
                                     <td class="issue-info">
-                                        <a href="#" id="href-rfc1">
+                                        <a href="#" id="">
                                             RWA 02 CRÉDITOS REVOLVENTES
                                         </a>
 
@@ -1560,7 +1563,7 @@ var contenido = ' ';
 '                                                       </li>'+
 '                                                   </ul>'+
 '                                               </div> <hr>'  +
-'<p class="alert alert-warning ">' +
+'<p class="alert alert-blue ">' +
  '  A data tracing operation can be defined as an end-to-end activity to perform data quality accuracy checks for CDEs' +
   '                                                       </p> '  ;
 
@@ -1599,40 +1602,58 @@ var contenido = ' ';
 
             //alert ('Estatus de la Validacion');
 
-            var contenido=
-            
+            var contenido= '<script>'+
+
+
+'$(\'#DTLp\').text(\'Se ha realizado la carga y validacion de datos Inicial para poder continuar con el ejercicio\');'+
+'$(\'#DTLpaso2\').click(function(){'+
+'console.log(\'Se activo el paso3 moba\');'+
+'$(\'#DTLp\').text(\'EL Data Steward se encarga de complementar la informaciòn agregando los datos de las cuentas asi como documentos LTP\');'+
+' });'+
+
+'$(\'#DTLpaso3\').click(function(){'+
+'console.log(\'Se activo el paso3 moba\');'+
+'$(\'#DTLp\').text(\'El data Steward complementa la informacion con tipos de LTP, fechas inicio y fin del ejercicion y documentacion en formato PDF\');'+
+' });'+
+
+'$(\'#DTLpaso4\').click(function(){'+
+'console.log(\'Se activo el paso4 moba\');'+
+'$(\'#DTLp\').text(\'El equipo de Lineaje se encarga de realizar validacion de los atributos y determinar el resultado del ejercicio\');'+
+' });'+
+'<\/script>' +
+
           '<div>'+
 '                                                   <ul class="steps" style="margin-left: 0">'+
 '                                                       <li data-step="1" class="complete">'+
 '                                                           <span class="step">1</span>'+
-'                                                           <span class="title">ALS</span>'+
+'                                                           <span class="title">Data Owner</span>'+
 '                                                       </li>'+
 ''+
 '                                                       <li data-step="2" class="complete">'+
-'                                                           <span class="step">2</span>'+
-'                                                           <span class="title">111</span>'+
+'                                                           <span class="step" id="DTLpaso2" >2</span>'+
+'                                                           <span class="title">Data Steward</span>'+
 '                                                       </li>'+
 ''+
-'                                                       <li data-step="3" class="complete">'+
-'                                                           <span class="step">3</span>'+
-'                                                           <span class="title">S050</span>'+
+'                                                       <li data-step="3" class="active" >'+
+'                                                           <span class="step" id="DTLpaso3" style="border-color:#f3ee54;">3</span>'+
+'                                                           <span class="title">Data Steward</span>'+
 '                                                       </li>'+
 ''+
-'                                                       <li data-step="4" class="active">'+
-'                                                           <span class="step" style="border-color:#f3ee54;">4</span>'+
-'                                                           <span class="title">SPC</span>'+
+'                                                       <li data-step="4" >'+
+'                                                           <span class="step" id="DTLpaso4" >4</span>'+
+'                                                           <span class="title">Lineage</span>'+
 '                                                       </li>'+
 '                                                   </ul>'+
 '                                               </div> <hr>'  +
-'<p class="alert alert-warning ">' +
- '  A data tracing operation can be defined as an end-to-end activity to perform data quality accuracy checks for CDEs' +
+'<p id="DTLp" class="alert alert-info ">' +
+ '  Se ha realizado la carga y validacion de datos Inicial para poder continuar con el ejercicio' +
   '                                                       </p> '  ;
 
 
 
 
                $.alert({
-                icon: 'fas fa-clock fa-2x fa-fw',
+                icon: 'fa fa-clock-o fa-2x fa-fw',
                 title: 'Data Tracing Lineage',
                 content: contenido,
                 columnClass: 'medium',
@@ -1643,7 +1664,7 @@ var contenido = ' ';
                  animationBounce: 1.5,
                 animateFromElement: false,
                 theme: 'material',
-                type: 'orange',
+                type: 'blue',
                 buttons: {
                     Aceptar: {
                          btnClass: 'btn-green',
@@ -2003,6 +2024,77 @@ $('#EnviarReporte').click(function(){
 	}
 );
 
+
+
+     $('#form_stat').click(function(){
+
+            //alert ('Estatus de la Validacion');
+
+            var contenido=
+
+'<div class="ibox-content">'+
+'                        <div class="row">'+
+'                            <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Confirmacion</h3>'+
+'                                <p>Con esta accion se confirma los resultados</p>'+
+'                                <form role="form">'+
+'                                    <div class="form-group"><label>Comentarioa</label> <input type="textarea" placeholder="Comentarios" class="form-control"></div>'+
+
+'                                    <div>'+
+
+
+'<div class="profile-user-info">'+
+'	<div class="profile-info-row">'+
+'		<div class="profile-info-name blue"> '+
+'		</div>'+
+'			<div class="profile-info-value col-xs-12 ">'+
+'				<span>'+
+'					<label id="switch-p">'+
+'						<input id="iswitch-p" name="switch-field-1" class="green  ace ace-switch ace-switch-6 " type="checkbox">'+
+
+'						<span class="lbl">'+
+'							<span>'+
+'								<span class="label label-lg label-info arrowed arrowed-left">APROBADO'+
+'								</span>'+
+'							</span>'+
+'						</span>'+
+
+'					</label>'+
+'				</span>'+
+'			</div>'+
+'	</div>'+
+'</div>'+
+
+'                                </form>'+
+'                           </div>'+
+'                        </div>'+
+'                    </div>';
+
+
+
+               $.alert({
+                icon: 'fa fa-info-circle fa-2x fa-fw',
+                title: 'Data Tracing Validation',
+                content: contenido,
+                columnClass: 'medium',
+                animationSpeed:800,
+                animationBounce:1,
+                animation: 'zoom',
+                closeAnimation: 'zoom',
+                 animationBounce: 1.5,
+                animateFromElement: false,
+                theme: 'material',
+                type: 'blue',
+                buttons: {
+                    Aceptar: {
+                         btnClass: 'btn-green',
+                         action:function () {
+                        }
+                    }
+                }
+            });
+
+
+   });
 
 
 

@@ -1,5 +1,12 @@
 {% extends 'dtproto_base.html' %}
 
+
+                {% block titulo %}
+        DATA OWNER
+                {%  endblock %}
+
+
+
 {% block content %}
 {% load static %}
 <div class="row">
@@ -53,7 +60,7 @@
                             <div class="col-sm-6"><h4>Excel Template</h4>
                                 <p>Puedes descargar la plantilla, Click:</p>
                                 <p class="text-center">
-                                    <a href="{% static 'core/template.xlsx' %}"><i class="fa fa-cloud-download big-icon"></i></a>
+                                    <a href="{% static 'core/LayOut.xlsx' %}"><i class="fa fa-cloud-download big-icon"></i></a>
                                 </p>
                             </div>
 
@@ -88,7 +95,7 @@
                     </div>
 
                     <div class="ibox-content">
-                        <form id="my-awesome-dropzone" class="dropzone" action="#">
+                        <form id="my-awesome-dropzone" class="dropzone" action="/do_full">
                             <div class="dropzone-previews"></div>
                             <button id="upload_file" type="submit" class="btn btn-primary pull-right">Upload File!</button>
                         </form>
@@ -108,6 +115,66 @@
         console.log('#upload_file');
 
     });
+//    my-awesome-dropzone.on("addedfiles", function(file) {
+//            console.log('files added' + files.name  );
+//            console.log(files.length + ' files added');
+//        });
+
+
+var myNewdDropzone = new Dropzone("#my-awesome-dropzone",  {
+    //url: "my-ajax.php",
+    method: "POST",
+    addRemoveLinks: false,
+    clickable: true,
+    //previewTemplate: document.querySelector('#preview-template').innerHTML,
+    init : function() {
+        this.on("addedfile", function(file) { console.log('files added' + file.name  );
+
+                 var contenido=
+
+          '<div>'+
+          '<p> EN esta seccion se valida el formato, numero de columnas, tipos de datops, en caso de error no se carga archivo, en caso de  datos correctos, el archivo se carga</p>' +
+'                                               </div> <hr>'  +
+'<p class="alert alert-info">' +
+ ' En caso de inconsistencias en el archivo se mostrara una lista y deberan ser corregidos para poder ingresar los datos al ejercicio ' +
+  '                                                       </p> '  ;
+
+
+
+
+               $.alert({
+                icon: 'fa fa-info-circle fa-2x fa-fw',
+                title: 'Validacion de archivo Inicial',
+                content: contenido,
+                columnClass: 'medium',
+                animationSpeed:800,
+                animationBounce:1,
+                animation: 'zoom',
+                closeAnimation: 'zoom',
+                 animationBounce: 1.5,
+                animateFromElement: false,
+                theme: 'material',
+                type: 'blue',
+                buttons: {
+                    Aceptar: {               btnClass: 'btn-green',
+                         action:function () {  }
+                    }
+                }
+            });
+
+
+
+
+
+
+        });
+//        this.on("thumbnail", function(file,fileurl) { new_thumbnail_added(file); });
+ //       this.on("removedfile", function(file) { new_file_removed(file); });
+  //      this.on("totaluploadprogress", function(progress) { display_progress(progress); });
+  //      this.on("queuecomplete", function() { all_files_uploaded(); });
+    //this.on("processing", function(file) { new_file_processed(file); });
+    }
+});
 
 </script>
 

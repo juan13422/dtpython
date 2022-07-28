@@ -72,12 +72,12 @@
                             </div>
                             -->
                         </div>
+
                         <div class="ibox-content">
-
+<!--
                             <div class="m-b-lg">
-              <!--
-                                <div class="input-group">
 
+                                <div class="input-group">
                                     <input type="text" placeholder="Teclee nombre reporte regulatorio ..."
                                     class=" form-control">
 
@@ -88,10 +88,12 @@
 
                                    </span>
                                 </div>
-               -->
+    -->
                                 <div class="m-t-md">
-                                    <strong> 1 Tracing Exercises</strong>
-                                </div>
+
+
+                                    <strong> 0 Tracing Exercises</strong>
+        </div>
 
                             </div>
 
@@ -142,24 +144,24 @@
 
 
 
-                            <div class="table-responsive" id="tabla-movimietnos">
-
+     <div class="table-responsive" id="tabla-movimietnos">
+   <!--
                             <table class="table table-hover issue-tracker">
                                 <tbody>
 
                                 <tr>
 
                                     <td>
-                                        <span class="label label-default arrowed" style="font-size:15px" >Iniciado</span>
+                                        <span class="label label-success arrowed" style="font-size:15px" >Aprobado</span>
                                     </td>
 
                                     <td class="issue-info">
                                         <a href="#" id="href-rfc1-2">
-                                            <h3>Ejercicio Inicial </h3>
+                                            RWA 02 ESTADO DE CUENTA ORO
                                         </a>
 
                                         <small>
-                                           Data Tracin Inicial: SOlo contempla la carga de datos con los que se da como inicio el ejercicio y esta a cargao del Data Owner
+                                           Data Tracin del producto Estado de Cuenta Oro con muestra de datos del periodo del 2022
                                         </small>
                                     </td>
 
@@ -167,28 +169,25 @@
                                         Juan Lopez Arellano
                                     </td>
                                     <td>
-
                                         <button id="form_stat" class="btn btn-success dim" type="button">
                                             <i class="fa fa-check"></i></button>
-
                                     </td>
-<!-- //////////////////////////////////      LOG  codigo del modal   //////////////////////////////                -->
+
                                     <td>
-                                        <!--
                                        <a id="btn-modal-log" class="btn btn-success">
                                        <i class="fa fa-info-circle fa-2x"></i>  </a>
-                                        -->
+
                                        <div class="modal fade" tabindex="-1" id="vtnlog">
                                             <div class="modal-dialog" style="min-width:500px;" role="document">
                                                 <div class="modal-content">
-                                                    <!--<div class="modal-header">
+                                                    <div class="modal-header">
                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                         <img src="{% static 'core/images/modelog.png" style="height: 100px;">
                                                         <h3 clas="modal-title">Información del ejercicio</h3>
 
-                                                    </div>-->
+                                                    </div>
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-md-3">
@@ -251,19 +250,18 @@
 
                                     </td>
 
-                                    <!--parte email "Carlos"-->
+
                                     <td>
-                                    <!--
                                         <a id="btn-modal-mail" class="btn btn-primary" >
                                        <i class="fa fa-share-alt-square fa-2x"></i>  </a>
-                                    -->
+
 
                                        <div class="modal fade" tabindex="-1" id="vtnmail">
                                         <div class="modal-dialog" style="min-width:500px;" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
 
-                                                     <!--insertar imagen de email-->
+
                                                      <h2><img src="{% static 'core/images/email.jpg' %}" style="  width: 75px;" class="img-circle">Datos Email</h2>
 
 
@@ -286,7 +284,7 @@
                                                               <input type="text" class="form-control" id="" placeholder="Asunto" name="asunto" value="Data Tracing - Ejercicio 01" required="" autofocus="" readonly>
                                                           </div>
 
-                                                                <!--Codigo para abrir el archivo pdf-->
+
                                                                 <div class="mb-3 mt-3">
                                                                     <a href="../documents/Detallado Data Tracing - Ejercicio 01.pdf" target="_blank">Archivo adjunto
                                                                     <img src="{% static 'core/images/adjunto.png' %}" style="width:30px">
@@ -313,14 +311,11 @@
                                         </div>
                                    </div>
                                     </td>
-                                  <!--fin email "Carlos"-->
-<!-- //////////////////////////////////      LOG  codigo del modal   //////////////////////////////                -->
-<!--  /////// Nota de los demas botonos dentro del formulario solo cambie el icono y su id para tener la funcionalidad del modal -->
+
+
+
 
                                 </tr>
-
-
-<!--
                                 <tr>
                                     <td>
                                         <span class="label label-success arrowed" style="font-size:15px" >Aprobado</span>
@@ -498,11 +493,9 @@
                                     </td>
 
                                 </tr>
-
-             -->
                                 </tbody>
                             </table>
-
+-->
                             </div>
 
 
@@ -1452,7 +1445,7 @@ var contenido = ' ';
 '$(\'#paso1\').click(function(){'+
 'console.log(\'Se activo el paso2 moba\');'+
 
-'$(\'#DTLp\').text(\'Se ha realizado la carga y validacion de datos Inicial para poder continuar con el ejercicio\');'+
+'$(\'#DTLp\').text(\'Calidad de datos se refiere a los procesos, técnicas, algoritmos y operaciones encaminados a mejorar la calidad de los datos existentes en empresas y organismos. Hay varias definiciones de calidad en datos pero la más común es que sirven su propósito\');'+
 
 '	/**	   $.alert({'+
 '			icon: \'fa fa-check-circle fa-2x fa-fw\','+
@@ -1480,17 +1473,12 @@ var contenido = ' ';
 
 '$(\'#DTLpaso2\').click(function(){'+
 'console.log(\'Se activo el paso3 moba\');'+
-'$(\'#DTLp\').text(\'EL Data Steward se encarga de complementar la informaciòn agregando los datos de las cuentas asi como documentos LTP\');'+
+'$(\'#DTLp\').text(\'Chnag text\');'+
 ' });'+
 
 '$(\'#DTLpaso3\').click(function(){'+
 'console.log(\'Se activo el paso3 moba\');'+
-'$(\'#DTLp\').text(\'El data Steward complementa la informacion con tipos de LTP, fechas inicio y fin del ejercicion y documentacion en formato PDF\');'+
-' });'+
-
-'$(\'#DTLpaso4\').click(function(){'+
-'console.log(\'Se activo el paso4 moba\');'+
-'$(\'#DTLp\').text(\'El equipo de Lineaje se encarga de realizar validacion de los atributos y determinar el resultado del ejercicio\');'+
+'$(\'#DTLp\').text(\'El procesamiento de datos es, en general, la acumulación y manipulación de elementos de datos para producir información significativa\');'+
 ' });'+
 
 
@@ -1502,32 +1490,32 @@ var contenido = ' ';
 '                                                           <span class="title">Data Owner</span>'+
 '                                                       </li>'+
 ''+
-'                                                       <li data-step="2" >'+
+'                                                       <li data-step="2" class="complete">'+
 '                                                           <span id="DTLpaso2" class="step">2</span>'+
 '                                                           <span class="title">Data Steward</span>'+
 '                                                       </li>'+
 ''+
-'                                                       <li data-step="3" >'+
+'                                                       <li data-step="3" class="complete">'+
 '                                                           <span id="DTLpaso3" class="step">3</span>'+
 '                                                           <span class="title">Data Steward</span>'+
 '                                                       </li>'+
 ''+
-'                                                       <li data-step="4" >'+
+'                                                       <li data-step="4" class="complete">'+
 '                                                           <span id="DTLpaso4" class="step">4</span>'+
 '                                                           <span class="title">Lineaje</span>'+
 '                                                       </li>'+
 '                                                   </ul>'+
 '                                               </div> <hr>'  +
-'<p id="DTLp"  class="alert alert-info">' +
- 'Se ha realizado la carga y validacion de datos Inicial para poder continuar con el ejercicio' +
+'<p id="DTLp"  class="alert alert-success">' +
+ 'Calidad de datos se refiere a los procesos, técnicas, algoritmos y operaciones encaminados a mejorar la calidad de los datos existentes en empresas y organismos. Hay varias definiciones de calidad en datos pero la más común es que sirven su propósito' +
   '                                                       </p> '  ;
 
 
 
 
                $.alert({
-                icon: 'fa fa-info-circle fa-2x fa-fw',
-                title: 'Data Tracing Exercice',
+                icon: 'fa fa-check-circle fa-2x fa-fw',
+                title: 'Data Tracing Execice',
                 content: contenido,
                 columnClass: 'medium',
                 animationSpeed:800,
@@ -1537,7 +1525,7 @@ var contenido = ' ';
                  animationBounce: 1.5,
                 animateFromElement: false,
                 theme: 'material',
-                type: 'blue',
+                type: 'green',
                 buttons: {
                     Aceptar: {
                          btnClass: 'btn-green',
@@ -1744,78 +1732,6 @@ var contenido = ' ';
 
 
 /******/
-
-
-
-     $('#form_stat').click(function(){
-
-            //alert ('Estatus de la Validacion');
-
-            var contenido=
-
-'<div class="ibox-content">'+
-'                        <div class="row">'+
-'                            <div class="col-sm-12 b-r"><h3 class="m-t-none m-b">Confirmacion</h3>'+
-'                                <p>Con esta accion se confirma los resultados</p>'+
-'                                <form role="form">'+
-'                                    <div class="form-group"><label>Comentarioa</label> <input type="textarea" placeholder="Comentarios" class="form-control"></div>'+
-
-'                                    <div>'+
-
-
-'                                    </div>'+
-
-'<div class="profile-user-info">'+
-'	<div class="profile-info-row">'+
-'		<div class="profile-info-name blue"> '+
-'		</div>'+
-'			<div class="profile-info-value col-xs-12 ">'+
-'				<span>'+
-'					<label id="switch-p">'+
-'						<input id="iswitch-p" name="switch-field-1" class="green  ace ace-switch ace-switch-6 " type="checkbox">'+
-'						<span class="lbl">'+
-'							<span>'+
-'								<span class="label label-lg label-info arrowed arrowed-left">VALIDACION'+
-'								</span>'+
-'							</span>'+
-'						</span>'+
-'					</label>'+
-'				</span>'+
-'			</div>'+
-'	</div>'+
-'</div>'+
-
-'                                </form>'+
-'                           </div>'+
-'                        </div>'+
-'                    </div>';
-
-
-
-               $.alert({
-                icon: 'fa fa-info-circle fa-2x fa-fw',
-                title: 'Data Tracing Validation',
-                content: contenido,
-                columnClass: 'medium',
-                animationSpeed:800,
-                animationBounce:1,
-                animation: 'zoom',
-                closeAnimation: 'zoom',
-                 animationBounce: 1.5,
-                animateFromElement: false,
-                theme: 'material',
-                type: 'blue',
-                buttons: {
-                    Aceptar: {
-                         btnClass: 'btn-green',
-                         action:function () {
-                        }
-                    }
-                }
-            });
-
-
-   });
 
 
 
