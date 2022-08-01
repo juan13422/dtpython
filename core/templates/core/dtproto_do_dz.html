@@ -95,9 +95,13 @@
                     </div>
 
                     <div class="ibox-content">
-                        <form id="my-awesome-dropzone" class="dropzone" action="/do_full">
+                        <!-- <form id="my-awesome-dropzone" class="dropzone" action="/do_full"> -->
+                        <form id="my-awesome-dropzone" class="dropzone" action="">
+
                             <div class="dropzone-previews"></div>
+                            <input type="file" name="document">
                             <button id="upload_file" type="submit" class="btn btn-primary pull-right">Upload File!</button>
+                            <button id="clean_dropzone" type="button" class="btn btn-primary pull-right">Clean Files!</button>
                         </form>
                         <div>
                             <div class="m text-right">
@@ -111,6 +115,14 @@
 			</div>
 
 <script>
+
+    $('#clean_dropzone').click(function(){
+        console.log('clean_dropzone');
+        Dropzone.forElement('#my-awesome-dropzone').removeAllFiles(true);
+
+    });
+
+
     $('#upload_file').click(function(){
         console.log('#upload_file');
 
@@ -121,19 +133,32 @@
 //        });
 
 
-var myNewdDropzone = new Dropzone("#my-awesome-dropzone",  {
-    //url: "my-ajax.php",
+//var myNewdDropzone = new Dropzone("#my-awesome-dropzone",  {
+
+Dropzone.options.myAwesomeDropzone = {
+    url: "/do_full_test",
     method: "POST",
     addRemoveLinks: false,
+    uploadMultiple: false,
     clickable: true,
     //previewTemplate: document.querySelector('#preview-template').innerHTML,
     init : function() {
-        this.on("addedfile", function(file) { console.log('files added' + file.name  );
+        this.on("addedfile", function(file) {
+
+        var thumbnail = $('.dropzone .dz-preview.dz-file-preview .dz-image:last');
+        console.log('files added' + file.name  );
+        //$(file.previewElement).find(".dz-image img").attr("src", "http://127.0.0.1:8000/static/core/images/citibnm.png")
+
+        //thumbnail.css('background', 'url(http://127.0.0.1:8000/static/core/images/citibnm.png)');
+        // ESTA SI FUNCIONO
+        this.emit("thumbnail", file, "http://127.0.0.1:8000/static/core/images/citibnm.png");
+
+
 
                  var contenido=
 
           '<div>'+
-          '<p> EN esta seccion se valida el formato, numero de columnas, tipos de datops, en caso de error no se carga archivo, en caso de  datos correctos, el archivo se carga</p>' +
+          '<p> DEBUG EN esta seccion se valida el formato, numero de columnas, tipos de datops, en caso de error no se carga archivo, en caso de  datos correctos, el archivo se carga</p>' +
 '                                               </div> <hr>'  +
 '<p class="alert alert-info">' +
  ' En caso de inconsistencias en el archivo se mostrara una lista y deberan ser corregidos para poder ingresar los datos al ejercicio ' +
@@ -168,13 +193,15 @@ var myNewdDropzone = new Dropzone("#my-awesome-dropzone",  {
 
 
         });
+        this.on("reset", function() { console.log('RESET Listener'); });
+        this.on("success", function(file,response) { console.log('SUCCESS Listener >>'+ response); });
 //        this.on("thumbnail", function(file,fileurl) { new_thumbnail_added(file); });
  //       this.on("removedfile", function(file) { new_file_removed(file); });
   //      this.on("totaluploadprogress", function(progress) { display_progress(progress); });
   //      this.on("queuecomplete", function() { all_files_uploaded(); });
     //this.on("processing", function(file) { new_file_processed(file); });
     }
-});
+};
 
 </script>
 

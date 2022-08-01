@@ -27,6 +27,7 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('ruteo/', views.ruteo, name="ruteo"),
     path('inbox', views.inbox, name="inbox"),
+    path('do_full_test', views.do_full_test, name="do_full_test"),
     path('upload', views.upload, name="upload"),
     path('do_ini', views.do_ini, name="do_ini"),
     path('do_full', views.do_full, name="do_full"),
@@ -38,6 +39,7 @@ urlpatterns = [
     path('lineage', lineage_views.lineage, name="lineage"),
     path('jqgrid', lineage_views.jqgrid, name="jqgrid"),
     path('felix', views.felix, name="felix"),
+    path('alex', views.alex, name="alex"),
 ]
 
 if settings.DEBUG:

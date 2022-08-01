@@ -85,3 +85,25 @@ def main(request):
 def felix(request):
     html_file = "core/prototipo_ntr.html"
     return render(request, html_file)
+
+@csrf_exempt
+def do_full_test(request):
+    if request.method == "POST":
+        uploaded_file = request.FILES['document']
+        print(uploaded_file.name)
+        print(uploaded_file.size)
+        print(uploaded_file.content_type)
+        fs=FileSystemStorage()
+        nombre = fs._save(uploaded_file.name,uploaded_file)
+
+        url = fs.url(nombre)
+        print(url)
+
+    html_file = "core/dt_dropzone_test.html.html"
+    return render(request, html_file)
+
+
+@csrf_exempt
+def alex(request):
+    html_file = "core/dtap_inbox_alex.html"
+    return render(request, html_file)
