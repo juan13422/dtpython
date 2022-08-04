@@ -163,7 +163,7 @@
     }
 
     .content-modal .btn-cerrar1 label {
-        padding: 7px 10px;
+        padding: 5px 10px;
         background-color: #80ad16;
         color: #fff;
         border-radius: 4px;
@@ -182,42 +182,64 @@
     }
 
     /*:::Fin Ventana Modal:::*/
-    /* formato seleccion de archivo */
-    .file-select {
-        position: relative;
-        display: inline-block;
-    }
-
-    .file-select::before {
-        background-color: #8f9599;
-        color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 3px;
-        content: 'Seleccionar';
-        /* testo por defecto */
+    /* :::formato seleccion de archivo:::: */
+    input[type='file'] {
         position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-    }
-
-    .file-select input[type="file"] {
+        width: .1px;
+        height: .1px;
+        overflow: hidden;
         opacity: 0;
-        width: 130px;
-        height: 32px;
+        z-index: -1;
+    }
+
+    input[type='file'] :focus+.file-input {
+        border-color: #1385e5;
+        box-shadow: 0 0 0 3px rgba(19, 133, 229, 0.1);
+        color: #333333;
+    }
+
+    /* Stylized button*/
+    .file-input {
         display: inline-block;
-    }
+        position: relative;
+        line-height: 2.3em;
+        text-align: center;
+        cursor: pointer;
+        padding: 0 1em;
+        border: 1px solid #ddd;
+        border-radius: .3em;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+        background: #fff;
 
-    :root {
-        --fn: 'Seleccionar archivo';
-    }
+        user-select: none;
+        appearance: none;
 
-    .file-select::before {
         white-space: nowrap;
-        content: var(--fn);
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        font-size: 1em;
+        /*background: -webkit-linear-gradient(white, #38495a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+    }
+
+    .file-input:hover {
+        border-color: #1385e5;
+        box-shadow: 0 0 0 3px rgba(19, 133, 229, 0.1);
+        color: #333333;
+        /* outline: none;*/
+    }
+
+    .file-input[disabled] {
+        cursor: wait;
+        /*opacity: .5;*/
+    }
+
+    .buscarchivo {
+        width: 150px;
+        height: 32px;
+        text-align: center;
     }
 
     /*Fin seleccion de archivo*/
@@ -227,7 +249,7 @@
 </div>
 
 <ul class="nav nav-pills text-center" id="menumenu">
-    <li class="nav-item" style="width:30%"><a class="nav-link" href="#tab1" data-toggle="tab">
+    <li class="nav-item active" style="width:30%"><a class="nav-link" href="#tab1" data-toggle="tab">
             <h4>Configuración</h4>
         </a></li>
     <!--li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">
@@ -335,15 +357,17 @@
                             <i class="green fa fa-file-excel-o fa-3x"></i>
                         </div>
                         <div class="col-sm-5">
-                            <input class="form-control" type="file" id="cargarexcel" accept=".xls,.xlsx"
-                                style="font-size: 13px; width: 100% ;color: #525252" />
+                            <div class="buscarchivo" style="width:100%; font-size: 15px;">
+                                <input type="file" id="cargarexcel" accept=".xls,.xlsx" class="inputfile"/>
+                                <label for="cargarexcel" class="file-input" >Seleccionar archivo</label>
+                            </div>
                         </div>
                         <div class="col-sm-1" style="width: 50% ">
                             <button class="btn btn-primary btn-md" id="btncargar" title="Cargar archivo"
                                 style="font-size: 8px;"><i class="fa fa-upload fa-2x"> &nbsp;&nbsp;Cargar
                                     archivo</i></button>
 
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                             <label class="btn btn-success" for="btn-modal" title="Llenar formulario"
                                 style="font-size: 8px;">
@@ -396,8 +420,8 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <button id="adicionar" class="btn btn-primary "
-                                                style="border-radius: 4px; padding:3%; ">Cargar
-                                                datos</button>&nbsp;&nbsp;
+                                            style="border-radius: 4px; padding:6px 10px; color: #fff;  cursor: pointer;">
+                                            Cargar datos</button>&nbsp;&nbsp;
                                         </div>
                                         <div class="col-sm-4"></div>
                                         <div class="col-sm-4 btn-cerrar">
@@ -432,7 +456,7 @@
                                 <th>FEED ID</th>
                                 <th>Nombre de los atributos</th>
                                 <th>Valor</th>
-                                <!--th>Tipo de LTP &nbsp; <a class="fa fa-question-circle" data-bs-toggle="tooltip" title="Archivo contra el cual se compara el resultado de los valores obtenidos ej.
+                                <!--th>Tipo de LTP &nbsp; <a class="fa fa-question-circle" data-bs-toggle="tooltip" title="Archivo contra el cual se compara el resultado de los valores obtenidos ej. 
                                     estado de cuenta"></a>
                                 </th>
                                 <th>Extraer</th>
@@ -543,75 +567,119 @@
                             <div class="form-group">
                                 <table class="table table-hover " WIDTH="70%" HEIGHT="25%">
                                     <tr>
-                                        <th><label>KYC</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check1" value="" onchange="check1()">&nbsp;&nbsp;
+                                            <label>KYC</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo"
-                                                enctype="multipart/form-data">
-                                                <input type="file" name="dc" id="" multiple accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten1" style="display: none;">
+                                                <input type="file" name="file" id="file1" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file1" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Customer Statement</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check2" value="" onchange="check2()">&nbsp;&nbsp;
+                                            <label>Customer Statement</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten2" style="display: none;">
+                                                <input type="file" name="file" id="file2" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file2" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Account Openning</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check3" value="" onchange="check3()">&nbsp;&nbsp;
+                                            <label>Account Openning</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten3" style="display: none;">
+                                                <input type="file" name="file" id="file3" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file3" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Exchange Rate</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check4" value="" onchange="check4()">&nbsp;&nbsp;
+                                            <label>Exchange Rate</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten4" style="display: none;">
+                                                <input type="file" name="file" id="file4" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file4" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Systems Screenshots</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check5" value="" onchange="check5()">&nbsp;&nbsp;
+                                            <label>Systems Screenshots</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten5" style="display: none;">
+                                                <input type="file" name="file" id="file5" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file5" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Account Agreement</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check6" value="" onchange="check6()">&nbsp;&nbsp;
+                                            <label>Account Agreement</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten6" style="display: none;">
+                                                <input type="file" name="file" id="file6" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file6" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Collateral Class</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check7" value="" onchange="check7()">&nbsp;&nbsp;
+                                            <label>Collateral Class</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten7" style="display: none;">
+                                                <input type="file" name="file" id="file7" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file7" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Lineage</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check8" value="" onchange="check8()">&nbsp;&nbsp;
+                                            <label>Lineage</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten8" style="display: none;">
+                                                <input type="file" name="file" id="file8" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file8" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th><label>Otros</label></th>
+                                        <th>
+                                            <input type="checkbox" id="check9" value="" onchange="check9()">&nbsp;&nbsp;
+                                            <label>Otros</label>
+                                        </th>
                                         <td>
-                                            <div class="file-select" id="dc" aria-label="archivo">
-                                                <input type="file" name="dc" id="" accept=".xls,.xlsx" />
+                                            <div class="buscarchivo" id="conten9" style="display: none;">
+                                                <input type="file" name="file" id="file9" class="inputfile"
+                                                    data-multiple-caption="{count} Archivos" multiple />
+                                                <label for="file9" class="file-input">Escoger archivo</label>
                                             </div>
                                         </td>
                                     </tr>
@@ -620,8 +688,8 @@
                             </div> <br>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <button id="" class="btn btn-primary "
-                                        style="border-radius: 4px; padding:3%; ">Guardar</button>&nbsp;&nbsp;
+                                    <button id="" class="btn btn-primary " type="submit"
+                                        style="border-radius: 4px; padding:4px 10px; color: #fff;  cursor: pointer;">Guardar</button>&nbsp;&nbsp;
                                 </div>
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4 btn-cerrar1">
@@ -632,14 +700,127 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Script botones seleccionar archivos-->
                     <script>
-                        function actualizarInputFile() {
-                            var filename = "'" + this.value.replace(/^.*[\\\/]/, '') + "'";
-                            this.parentElement.style.setProperty('--fn', filename);
-                        }
+                        var inputs = document.querySelectorAll('.inputfile'),
+                            inputs_arr = Array.prototype.slice.call(inputs);
 
-                        document.querySelectorAll(".file-select input").forEach((ele) => ele.addEventListener('change', actualizarInputFile));
+                        inputs_arr.forEach(function (input) {
+                            var label = input.nextElementSibling,
+                                labelVal = label.innerHTML;
+
+                            input.addEventListener('change', function (e) {
+                                var fileName = '';
+
+                                if (this.files && this.files.length > 1) {
+                                    fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+                                } else {
+                                    fileName = e.target.value.split('\\').pop();
+                                }
+
+                                if (fileName) {
+                                    label.innerHTML = fileName;
+                                } else {
+                                    label.innerHTML = labelVal;
+                                }
+                                console.log('buscar1',fileName)
+
+                            });
+                           
+                        });
+
+                        function check1() {
+                            element = document.getElementById("conten1");
+                            check = document.getElementById("check1");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check2() {
+                            element = document.getElementById("conten2");
+                            check = document.getElementById("check2");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check3() {
+                            element = document.getElementById("conten3");
+                            check = document.getElementById("check3");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check4() {
+                            element = document.getElementById("conten4");
+                            check = document.getElementById("check4");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check5() {
+                            element = document.getElementById("conten5");
+                            check = document.getElementById("check5");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check6() {
+                            element = document.getElementById("conten6");
+                            check = document.getElementById("check6");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check7() {
+                            element = document.getElementById("conten7");
+                            check = document.getElementById("check7");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check8() {
+                            element = document.getElementById("conten8");
+                            check = document.getElementById("check8");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function check9() {
+                            element = document.getElementById("conten9");
+                            check = document.getElementById("check9");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
                     </script>
+
                     <!--Fin de Ventana Modal-->
                 </div>
             </div>
@@ -648,74 +829,77 @@
 
         <a class="btn btn-primary" id="btnPrevious2">Previous</a>
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
-		Enviar
-		</button>
+            Enviar
+        </button>
         <!-- Ventana modal documentos requeridos-->
 
     </div>
-<!--Juan Inicio-->
-		<div class="modal fade" id="modalForm" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times;</span>
-							<span class="sr-only">Cerrar</span>
-						</button>
-						<h4 class="modal-title" id="myModalLabel">Notificación Equipo Linaje</h4>
-					</div>
-					<div class="modal-body">
-						<p class="statusMsg"></p>
-						<form role="form">
-							<div class="form-group">
-								<label for="inputEjercicio">ID Ejercicio: 1245822</label>
-							</div>
-							<div class="form-group">
-								<label for="inputSOEID">Usuario: AR10244</label>
-							</div>
-							<div class="form-group">
-								<label for="inputselection">Reporte Regulatorio: 2052A</label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputproducto">Producto: Préstamos Personales</label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputatributo1">Atributo 1: NUMCLIENTE</label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputatributo2">Atributo 2: TPER</label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputatributo3">Atributo 3: CUENTABASICA</label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputatributo4">Atributo 4: ROLLOVER</label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputatributo5">Atributo 5: DIGITO</label><br>
-							</div>
-							<div class="form-group">
-								<label for="fecha_tracing">Fecha Tracing: <script>date = new Date().toLocaleDateString(); document.write(date);</script></label><br>
-							</div>
-							<div class="form-group">
-								<label for="inputatributo1">Correo(s): gb36864@citi.com, ra0113@citi.com</label>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-primary submitBtn" id="not" data-toggle="envio" onclick="Notificar();">Notificar</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript">
-			document.getElementById("not").onclick = Notificar;
-			function Notificar(){
-			swal("Datos Confirmados", "Se envío la notificación correctamente al equipo de Linaje", "success", {timer: 4000});
-			}
-		</script>
-<!--Juan Fin-->
+    <!--Juan Inicio-->
+    <div class="modal fade" id="modalForm" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Cerrar</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Notificación Equipo Linaje</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="statusMsg"></p>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="inputEjercicio">ID Ejercicio: 1245822</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSOEID">Usuario: AR10244</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputselection">Reporte Regulatorio: 2052A</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputproducto">Producto: Préstamos Personales</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo1">Atributo 1: NUMCLIENTE</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo2">Atributo 2: TPER</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo3">Atributo 3: CUENTABASICA</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo4">Atributo 4: ROLLOVER</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo5">Atributo 5: DIGITO</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_tracing">Fecha Tracing:
+                                <script>date = new Date().toLocaleDateString(); document.write(date);</script>
+                            </label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo1">Correo(s): gb36864@citi.com, ra0113@citi.com</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary submitBtn" id="not" data-toggle="envio"
+                        onclick="Notificar();">Notificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("not").onclick = Notificar;
+        function Notificar() {
+            swal("Datos Confirmados", "Se envío la notificación correctamente al equipo de Linaje", "success", { timer: 4000 });
+        }
+    </script>
+    <!--Juan Fin-->
 </div>
 
 <!--Script botones menu-->
@@ -862,11 +1046,11 @@
                                                     <div class="profile-info-row">
                                                         <input id="archivo-2" name="documentos" type="file" class="file" multiple=true
                                                             data-preview-file-type="any">
-
+                                        
                                                         <div class="profile-info-value col-xs-6 ">
                                                             <span>
                                                                 <div class="col-xs-12">
-
+                                        
                                                                 </div>
                                                             </span>
                                                         </div>
