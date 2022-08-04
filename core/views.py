@@ -7,7 +7,6 @@ from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 def index(request):
-    
     return render(request,"core/index.html")
 
 @csrf_exempt
