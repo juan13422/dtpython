@@ -514,6 +514,7 @@
                             <thead>
                                 <tr>
                                     <th data-toggle="true">Cuenta encriptada</th>
+                                    <th>Cuenta desencriptada</th>
                                     <th>Producto</th>
                                     <th data-hide="all">Codigo del país</th>
                                     <th>Fecha de la revisión</th>
@@ -537,7 +538,7 @@
                                     <td>2 09843kldf</td>
                                     <td>3 0000000</td>
                                     <td>4 kljdf asil </td>
-                                    <td>5000000000</td>
+                                    <td>2009-12-03</td>
                                     <td>6k lkvsfdz </td>
                                     <td>7 0000000</td>
                                     <td>8iisfi34234ijio</td>
@@ -546,6 +547,7 @@
                                     <td>11 0000000</td>
                                     <td>12 pó´sero8796</td>
                                     <td>13 000000</td>
+                                    <td>14 b</td>
                                     <td><label id="docreq" class="btn btn-success" for="btn-modal1"
                                             title="Buscar documento" style="padding: 2px 10px 2px 10px;">
                                             <i class="fa fa-search"></i>
@@ -659,7 +661,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            <input type="checkbox" id="check8" value="" onchange="check8()">&nbsp;&nbsp;
+                                            <input type="checkbox" id="check8" value="" onchange="check8(); Noti1(); Noti2();">&nbsp;&nbsp;
                                             <label>Lineage</label>
                                         </th>
                                         <td>
@@ -687,10 +689,16 @@
 
                             </div> <br>
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <button id="" class="btn btn-primary " type="submit"
-                                        style="border-radius: 4px; padding:4px 10px; color: #fff;  cursor: pointer;">Guardar</button>&nbsp;&nbsp;
+                                <!--Inicio Juan-->
+                                <div class="col-sm-4" id="contennot1" style="display:none;">
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#modal1Form" 
+                                    style="border-radius: 4px; padding:4px 10px; color: #fff;  cursor: pointer;">Guardar</button>&nbsp;&nbsp;
                                 </div>
+                                <div class="col-sm-4" id="contennot2" style="display:block;">
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#modal2Form" 
+                                    style="border-radius: 4px; padding:4px 10px; color: #fff;  cursor: pointer;">Guardar</button>&nbsp;&nbsp;
+                                </div>
+                                <!--Fin Juan-->
                                 <div class="col-sm-4"></div>
                                 <div class="col-sm-4 btn-cerrar1">
                                     <label for="btn-modal1">Cerrar</label>
@@ -819,6 +827,28 @@
                                 element.style.display = 'none';
                             }
                         }
+                        // Inicio Juan
+                        function Noti1() {
+                            element = document.getElementById("contennot1");
+                            check = document.getElementById("check8");
+                            if (check.checked) {
+                                element.style.display = 'block';
+                            }
+                            else {
+                                element.style.display = 'none';
+                            }
+                        }
+                        function Noti2() {
+                            element = document.getElementById("contennot2");
+                            check = document.getElementById("check8");
+                            if (check.checked) {
+                                element.style.display = 'none';
+                            }
+                            else {
+                                element.style.display = 'block';
+                            }
+                        }
+                        // Fin Juan
                     </script>
 
                     <!--Fin de Ventana Modal-->
@@ -828,14 +858,13 @@
 
 
         <a class="btn btn-primary" id="btnPrevious2">Previous</a>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
+        <!--<button class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
             Enviar
-        </button>
+        </button>-->
         <!-- Ventana modal documentos requeridos-->
 
     </div>
-    <!--Juan Inicio-->
-    <div class="modal fade" id="modalForm" role="dialog">
+    <div class="modal fade" id="modal1Form" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -843,7 +872,7 @@
                         <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Cerrar</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">Notificación Equipo Linaje</h4>
+                    <h4 class="modal-title" id="myModalLabel">Notificación Equipo Linaje y Negocio</h4>
                 </div>
                 <div class="modal-body">
                     <p class="statusMsg"></p>
@@ -881,22 +910,86 @@
                             </label><br>
                         </div>
                         <div class="form-group">
-                            <label for="inputatributo1">Correo(s): gb36864@citi.com, ra0113@citi.com</label>
+                            <label for="inputatributo1">Correo(s): gb36864@citi.com, ra0113@citi.com, ab36864@citi.com, bc0113@citi.com, cd0113@citi.com</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary submitBtn" id="not" data-toggle="envio"
-                        onclick="Notificar();">Notificar</button>
+                    <button type="button" class="btn btn-primary submitBtn" id="not1" data-toggle="envio"
+                        onclick="Notificar1();" data-dismiss="modal">Notificar</button>
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript">
-        document.getElementById("not").onclick = Notificar;
-        function Notificar() {
-            swal("Datos Confirmados", "Se envío la notificación correctamente al equipo de Linaje", "success", { timer: 4000 });
+        document.getElementById("not1").onclick = Notificar1;
+        function Notificar1() {
+            swal("Datos Confirmados", "Se enviaron las notificaciones correctamente", "success", { timer: 3000, buttons: false});
+        }
+    </script>
+    <div class="modal fade" id="modal2Form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Cerrar</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Notificación Equipo Negocio</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="statusMsg"></p>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="inputEjercicio">ID Ejercicio: 1245822</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSOEID">Usuario: AR10244</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputselection">Reporte Regulatorio: 2052A</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputproducto">Producto: Préstamos Personales</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo1">Atributo 1: NUMCLIENTE</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo2">Atributo 2: TPER</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo3">Atributo 3: CUENTABASICA</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo4">Atributo 4: ROLLOVER</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo5">Atributo 5: DIGITO</label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha_tracing">Fecha Tracing:
+                                <script>date = new Date().toLocaleDateString(); document.write(date);</script>
+                            </label><br>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputatributo1">Correo(s): ab36864@citi.com, bc0113@citi.com, cd0113@citi.com</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary submitBtn" id="not2" data-toggle="envio"
+                        onclick="Notificar1();" data-dismiss="modal">Notificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("not2").onclick = Notificar2;
+        function Notificar2() {
+            swal("Datos Confirmados", "Se envío la notificación correctamente", "success", { timer: 3000, buttons: false});
         }
     </script>
     <!--Juan Fin-->
